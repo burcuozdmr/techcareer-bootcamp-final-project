@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
-import "./VisualSlide.css";
+import classes from "./VisualSlide.module.css";
 import Navbar from "./Navbar";
 import axios from "axios";
 
@@ -26,9 +26,9 @@ const VisualSlide = () => {
   }, []);
 
   return (
-    <section className="image ">
+    <section className={classes.image}>
       <Navbar></Navbar>
-      <div className="img-section"></div>
+      <div className={classes["img-section"]}></div>
       <Swiper
         onSlideChange={(swiper) => {
           setActiveSlide(swiper.activeIndex);
@@ -50,8 +50,8 @@ const VisualSlide = () => {
         }}
         pagination={true}
         modules={[EffectCoverflow, Pagination, Autoplay]}
-        className="mySwiper"
-        style={{ paddingTop: "170px" }}
+        className={classes.swiper}
+        style={{ paddingTop: "150px" }}
       >
         {data.map((item) => (
           <SwiperSlide
@@ -61,13 +61,14 @@ const VisualSlide = () => {
                 activeSlide === item.id -1 ? "1px 1px 15px 4px #31d7a9" : "none",
               transition: "border 0.3s, box-shadow 0.3s",
             }}
+            className={classes['swiper-slide']}
           >
-            <div className="slide-content">
+            <div className={classes["slide-content"]}>
               <img
                 src={item.url} 
                 alt=""
               />
-              <div className="overlay">
+              <div className={classes.overlay}>
                 <h6 className="text-light">Title</h6>
               </div>
             </div>

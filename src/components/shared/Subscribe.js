@@ -3,7 +3,7 @@ import classes from "./Subscribe.module.css";
 
 const Subscribe = () => {
   return (
-    <div  className="position-relative z-2" style={{height:'25vh'}}>
+    <div  className="position-relative z-2 " style={{height:'25vh'}}>
       <section className='container' style={{width:'850px'}}>
         <div className={classes['bg-mainColor']}></div>
         <div

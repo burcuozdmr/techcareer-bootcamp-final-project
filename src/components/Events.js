@@ -1,372 +1,129 @@
 import React from "react";
+import Pagination from "./Pagination";
+import Checkbox from "./Checkbox";
+
+const CARDS = [
+  {
+    id: "e1",
+    title: "e1",
+    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
+  },
+  {
+    id: "e2",
+    title: "e1",
+    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
+  },
+  {
+    id: "e3",
+    title: "e1",
+    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
+  },
+  {
+    id: "e4",
+    title: "e1",
+    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
+  },
+  {
+    id: "e5",
+    title: "e1",
+    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
+  },
+  {
+    id: "e6",
+    title: "e1",
+    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
+  },
+  {
+    id: "e7",
+    title: "e1",
+    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
+  },
+  {
+    id: "e8",
+    title: "e1",
+    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
+  },
+  {
+    id: "e9",
+    title: "e1",
+    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
+  },
+  {
+    id: "e10",
+    title: "e1",
+    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
+  },
+  {
+    id: "e11",
+    title: "e1",
+    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
+  },
+  {
+    id: "e12",
+    title: "e1",
+    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
+  },
+  {
+    id: "e13",
+    title: "e1",
+    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
+  },
+  {
+    id: "e14",
+    title: "e1",
+    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
+  },
+  {
+    id: "e15",
+    title: "e1",
+    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
+  },
+  {
+    id: "e16",
+    title: "e1",
+    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
+  },
+];
+
 const Events = () => {
-  const imageUrls = [
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-  ];
-
-  const cardStyle = {
-    height: "300px",
-    overflowY: "scroll",
-    maxHeight: "230px",
-  };
-  const cardHeaderStyle = {
-    marginLeft: "20px",
-    marginTop: "5px",
-  };
-
   return (
-    <div className="container mt-3">
-      <div className="row">
-        <div className="col-lg-3 col-md-4 col-sm-6 ">
-          <div className="card border mb-2">
-            <h6 style={cardHeaderStyle}>EVENT PLACE</h6>
-            <div className="card-body d-block" style={cardStyle}>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Adana
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Ankara
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Antalya
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Aydın
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Balıkesir
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Bursa
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Çanakkale
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Denizli
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Edirne
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Eskişehir
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Isparta
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Mersin
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  İstanbul
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  İzmir
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Muğla
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Kırıkkale
-                </label>
-              </div>
+    <div
+      className="container card p-4 border-0"
+      style={{ marginTop: "20rem", marginBottom: "4rem" }}
+    >
+      <div className="card-header">
+        <h4>TITLE</h4>
+      </div>
+      <div className="card-body">
+        <div className="row pt-3">
+          <div className="col-lg-2 col-sm-4">
+            <Checkbox></Checkbox>
+            <div class="d-grid col mx-auto">
+              <button class="btn btn-primary" type="button">
+                Filter
+              </button>
             </div>
           </div>
-          <div className="card border mb-2">
-            <h6 style={cardHeaderStyle}>EVENT CATEGORY</h6>
-            <div className="card-body " style={cardStyle}>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Concert
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Theatre
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Football
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Basketball
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Volleyball
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Stand-Up
-                </label>
-              </div>{" "}
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Ballet-Dance
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Circus
-                </label>
-              </div>
+          <div className="col-lg-10 col-sm-8">
+            <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
+              {CARDS.map((card) => (
+                <div className="col" key={card.id}>
+                  <div class="card bg-secondary">
+                    <img
+                      src={card.image}
+                      class="card-img-top"
+                      alt=""
+                      style={{ height: "18rem" }}
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">{card.title}</h5>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
+            <Pagination></Pagination>
           </div>
-          <div className="card border mb-2">
-            <div className="card-body">
-              <form>
-                <label>EVENT DATE</label>
-                <br></br>
-                <br></br>
-                <input type="date" />
-              </form>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-9 col-md-8 col-sm-6 md-ms-auto">
-          <div className="row justify-content d-flex flex-wrap">
-            {imageUrls.slice(0, 15).map((imageUrl, index) => (
-              <div key={index} className="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <a href="#id" className=" h-100">
-                  <img
-                    className="img img-thumbnail"
-                    src={imageUrl}
-                    alt={`Image ${index}`}
-                  />
-                </a>
-              </div>
-            ))}
-          </div>
-
-          <nav aria-label="Page navigation example">
-            <ul className="pagination justify-content-center">
-              <li className="page-item">
-                <a className="page-link" href="#id" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#id">
-                  1
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#id">
-                  2
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#id">
-                  3
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#id" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
         </div>
       </div>
     </div>

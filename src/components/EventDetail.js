@@ -50,21 +50,21 @@ export default function EventDetail() {
                 style={{ width: "40px ", height: "40px" }}
                 
               >
-                <a href="https://facebook.com" target='_blank' style={{color: "inherit"}}><i className="fa-brands fa-facebook-f fa-xl "></i></a>
+                <a href="https://facebook.com" target='blank' style={{color: "inherit"}} ><i className="fa-brands fa-facebook-f fa-xl "></i></a>
               </button>
               <button
                 className="border rounded-circle p-2 d-flex justify-content-center align-items-center btn btn-outlined"
                 title="Share on X"
                 style={{ width: "40px ", height: "40px" }}
               >
-                <a href="https://twitter.com" target="_blank" style={{color: "inherit"}}><i className="fa-brands fa-twitter fa-xl"></i></a>
+                <a href="https://twitter.com" target="blank" style={{color: "inherit"}}><i className="fa-brands fa-twitter fa-xl"></i></a>
               </button>
               <button
                 className="border rounded-circle p-2 d-flex justify-content-center align-items-center btn btn-outlined"
                 title="Share on Instagram"
                 style={{ width: "40px ", height: "40px" }}
               >
-                <a href="https://instagram.com" target="_blank" style={{color: "inherit"}}><i className="fa-brands fa-instagram fa-xl"></i></a>
+                <a href="https://instagram.com" target="blank" style={{color: "inherit"}}><i className="fa-brands fa-instagram fa-xl"></i></a>
               </button>
         </div>
     </div>

@@ -25,8 +25,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`navbar navbar-expand-lg fixed-top ${
-        scrolled ? `opacity-75 ${classes["bg-mainLightColor"]}` : ""
+      className={`navbar navbar-expand-lg fixed-top  ${
+        scrolled ? ` ${classes["bg-mainLightColor"]}` : ""
       }`}
     >
       <div className="container-fluid container mt-3 mb-3 d-flex justify-content-between ">

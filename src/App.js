@@ -1,27 +1,25 @@
-import React from "react"
-import {Routes, Route } from "react-router-dom"
-import Home from "./pages/Home"
-import Results from "./pages/Results";
-import Detail from "./pages/Detail"
-import NotFound from "./pages/NotFound";
-import AdminTotal from "./admin/components/AdminTotal";
-import { HelmetProvider } from "react-helmet-async";
+import React from 'react'
+import { createBrowserRouter,RouterProvider } from 'react-router-dom'
+import Root from './pages/Root'
+import HomePage from './pages/HomePage'
+import EventDetailPage from './pages/EventDetailPage'
+import EventsPage from './pages/EventsPage'
+
+const router = createBrowserRouter([
+  {path:'/', element:<Root/>,children :[
+    {index:true, element: <HomePage/>},
+    {path:':category', element: <EventsPage/>},
+    {path:':category/:eventId', element: <EventDetailPage/>}
+  ]}
+])
+
 const App = () => {
   return (
     <div>
-      <HelmetProvider>
-     <Routes>
-      <Route path="/" element={<Home/>} />
-      <Route path="/search-result" element={<Results/>} />
-      <Route path="/event" element={<Detail/>} />
-      <Route path="/*" element={<NotFound/>} />
-      <Route path="/admin-panel" element={<AdminTotal/>} />
-    </Routes> 
-    </HelmetProvider>
-    
-   
+      <RouterProvider router={router}></RouterProvider>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
+

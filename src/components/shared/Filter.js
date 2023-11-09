@@ -3,7 +3,7 @@ import classes from "../shared/Filter.module.css";
 
 const Filter = () => {
   return (
-    <section className="container" style={{width:'850px'}}>
+    <section className="container position-absolute top-100 start-50 translate-middle" style={{width:'850px'}}>
       <div
         className={`card border border-0 p-5 shadow-lg p-3 mb-5 rounded ${classes["bg-mainColor"]}`}
       >
