@@ -1,173 +1,72 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import EventDetailSlider from "./EventDetailSlider"
-import Maps from './Maps';
-import { getEventDetail } from '../store/EventDetailSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import ScrollSpy from "./ScrollSpy";
 
-export default function EventDetail() {
 
-    // const [data, setData] = useState([]);
-
-    // useEffect(() => {
-    //   axios.get('https://jsonplaceholder.typicode.com/comments/1')
-    //     .then((response) => {
-    //       setData(response.data);
-    //     })
-    //     .catch((error) => {
-    //       console.error('Fetching error: ', error);
-    //     });
-    // },[]);
-
-    const dispatch = useDispatch();
-     
-    const {eventDetail} = useSelector((state) => state.eventDetail);
-    console.log(eventDetail);
-    
-    useEffect(()=>{
-      dispatch(getEventDetail())
-    },[]);
-
-    if(eventDetail.length === 0) {
-      return <div>Datas are Loading</div>
-    }
-
+const EventDetail = () => {
   return (
-    <>
-     <div className="container mt-5 mb-5">
-      {/* first row, event name and share start */}
-    <div className="row rounded-1 pt-2 pb-2" style={{backgroundColor: "#0B2657"}}>
-        <div className="col-9 mb-2 ">
-            <div className="item display-6 text-white text-uppercase">{eventDetail.name.official}</div>
-        </div>
-
-        <div className="col-3 mb-2 d-flex align-items-center justify-content-end gap-2">
-         
-              <button
-                className="border rounded-circle p-2 d-flex justify-content-center align-items-center btn btn-outlined"
-                title="Share on Facebook"
-                style={{ width: "40px ", height: "40px" }}
-                
-              >
-                <a href="https://facebook.com" target='blank' style={{color: "inherit"}} ><i className="fa-brands fa-facebook-f fa-xl "></i></a>
-              </button>
-              <button
-                className="border rounded-circle p-2 d-flex justify-content-center align-items-center btn btn-outlined"
-                title="Share on X"
-                style={{ width: "40px ", height: "40px" }}
-              >
-                <a href="https://twitter.com" target="blank" style={{color: "inherit"}}><i className="fa-brands fa-twitter fa-xl"></i></a>
-              </button>
-              <button
-                className="border rounded-circle p-2 d-flex justify-content-center align-items-center btn btn-outlined"
-                title="Share on Instagram"
-                style={{ width: "40px ", height: "40px" }}
-              >
-                <a href="https://instagram.com" target="blank" style={{color: "inherit"}}><i className="fa-brands fa-instagram fa-xl"></i></a>
-              </button>
-        </div>
-    </div>
-    {/* first row ends */}
-
-    {/* second row, event images slider start */}
-    <div className='row'>    
-        <div className="col-12  mb-2">
-            <div className="item">
-                <EventDetailSlider/>
+    <div className="container card mb-5 mt-5 border-0 bg-secondary p-5">
+      <div className="row gap-4">
+        <div
+          id="carouselExampleAutoplaying"
+          class="carousel slide  rounded bg-light bg-opacity-50 col-lg-7 col-sm-12 "
+          data-bs-ride="true"
+          style={{ maxWidth: "700px" }}
+        >
+          <div class="carousel-inner p-3">
+            <div class="carousel-item active">
+              <img
+                src="https://img.freepik.com/free-vector/music-event-poster-template-with-abstract-shapes_1361-1316.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699574400&semt=ais"
+                class="d-block mx-auto"
+                alt="..."
+              />
             </div>
-        </div>
-    </div>
-    {/* second row ends */}
-
-   {/* third row, event detail and ticket-date sections start */}
-    <div className="row">
-        <div className="col-lg-6 col-12 mb-2 border border-3 rounded-1 d-flex align-items-start justify-content-center">
-            <div className="item h5 pt-4">{eventDetail.flags.alt} {eventDetail.population}</div>
-        </div>
-
-       
-        <div className="col-lg-6 col-12 mb-2">
-            <div className="item">
-
-            <div className="accordion" id="accordionPanelsStayOpenExample">
-                
-                <div className="accordion-item">
-                    <h2 className="accordion-header ">
-                    <button className="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                    <i className="bi bi-calendar-week pe-3 h2 "></i> <p className='h4'>Event Date</p>
-                    </button>
-                    </h2>
-
-                    <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show" >
-                    <div className="accordion-body">
-                    <ul className='list-group h5'>
-                      <li className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'>
-                        <p className='pt-2'>Start - 12.12.2024 - 09:00</p>
-                            
-                      </li>
-                      <li className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'>
-                        <p className='pt-2'>End - 13.12.2024 - 09:00</p> 
-                      </li>
-                    </ul>
-                    </div>
-                    </div>
-                </div>
-
-                <div className="accordion-item">
-                    <h2 className="accordion-header">
-                    <button className="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                    <i className="bi bi-ticket-perforated pe-3 h2 "></i> <p className=' h4'>Ticket Groups and Prices</p>
-                    </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseTwo" className="accordion-collapse collapse show" >
-                    <div className="accordion-body">
-                        <ul className='list-group h5'>
-                            <li className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'>
-                                <p className='pt-2'>Group 1 - 25 $</p>
-                                <div>
-                                  <button className='bi bi-dash-circle btn btn-lg'></button>
-                                   <p className='d-inline h4'>0</p>
-                                  <button className='bi bi-plus-circle btn  btn-lg'></button>
-                                </div>
-                            </li>
-                            <li className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'>
-                                <p className='pt-2'>Group 2 - 35 $</p> 
-                                <div>
-                                    <button className='bi bi-dash-circle btn btn-lg'></button> 
-                                      <p className='d-inline h4'>0</p>
-                                    <button className='bi bi-plus-circle btn  btn-lg'></button>
-                                </div>
-                            </li>
-                            <li className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'>
-                                <p className='pt-2'>Group 3 - 45 $</p> 
-                               <div>
-                                 <button className='bi bi-dash-circle btn btn-lg'></button> 
-                                 <p className='d-inline h4'>0</p>
-                                <button className='bi bi-plus-circle btn btn-lg'></button>
-                               </div>
-                            </li>
-                        </ul>
-                      
-                    </div>
-                    </div>
-                </div>
-                </div>
-            
-                </div>
-                 </div>
-                 </div>
-                 {/* third row ends */}
-                {/* fourth row, maps section start */}
-                 <div className='row justify-content-center'>
-        <div className="col-12 col-md-8 border border-3 rounded-1 p-0">
-            <div className="item">
-            <Maps location={eventDetail}/>
+            <div class="carousel-item">
+              <img
+                src="https://img.freepik.com/free-vector/modern-event-banner-template-with-degrade-background_1361-2219.jpg"
+                class="d-block mx-auto"
+                alt="..."
+              />
             </div>
+            <div class="carousel-item">
+              <img
+                src="https://img.freepik.com/free-vector/music-event-poster-template-with-abstract-shapes_1361-1316.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699574400&semt=ais"
+                class="d-block mx-auto"
+                alt="..."
+              />
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
+        <div className="col-lg-5 col-sm-12 p-0">
+          {/* <h3 className="mb-4">TITLE EVENT</h3> */}
+          <ScrollSpy></ScrollSpy>
+          {/* <div className="card p-4">
+          <p className="fs-5 fw-normal text-bg-secondary" >About Event</p>
+            <p className="fw-light"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+        
+            </p>
+          </div> */}
         </div>
-           {/* fourth row ends */}
-</div>
+      </div>
+    </div>
+  );
+};
 
-    </>
-  )}
+export default EventDetail;

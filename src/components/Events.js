@@ -1,6 +1,7 @@
 import React from "react";
 import Pagination from "./Pagination";
 import Checkbox from "./Checkbox";
+import classes from './Events.module.css'
 
 const CARDS = [
   {
@@ -88,7 +89,7 @@ const CARDS = [
 const Events = () => {
   return (
     <div
-      className="container card p-4 border-0"
+      className={`container card p-4 border-0 ${classes['bg-mainColor']}`}
       style={{ marginTop: "20rem", marginBottom: "4rem" }}
     >
       <div className="card-header">
@@ -99,7 +100,7 @@ const Events = () => {
           <div className="col-lg-2 col-sm-4">
             <Checkbox></Checkbox>
             <div class="d-grid col mx-auto">
-              <button class="btn btn-primary" type="button">
+              <button className={`btn btn-primary border-0 ${classes['bg-secondaryColor']}`} type="button">
                 Filter
               </button>
             </div>
@@ -108,7 +109,7 @@ const Events = () => {
             <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
               {CARDS.map((card) => (
                 <div className="col" key={card.id}>
-                  <div class="card bg-secondary">
+                  <div class="card bg-secondary" style={{'cursor':'pointer'}}>
                     <img
                       src={card.image}
                       class="card-img-top"

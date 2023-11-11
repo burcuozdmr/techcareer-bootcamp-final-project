@@ -53,6 +53,9 @@
 .bg-mainLightColor {
   background-color: #0B2657 !important;
 }
+.shadowColor{
+  box-shadow: rgba(49, 215, 169, 0.2) 0px 7px 29px 0px;
+}
   
   
   

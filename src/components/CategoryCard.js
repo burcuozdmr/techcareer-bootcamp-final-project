@@ -26,7 +26,7 @@ function CategoryCard({ title }) {
     <>
       <div className="container mb-4 mt-2">
         <fieldset className="bg-mainColor rounded px-5 pb-3 pt-3 card border-0">
-          <div className="d-flex justif-content-between mt-3 p-3 card-header">
+          <div className="d-flex justif-content-between mt-3 p-3 card-header shadowColor">
             <legend className="col-lg-10  col-sm-9 text-light fw-semibold fs-5 ">
               {title}
             </legend>

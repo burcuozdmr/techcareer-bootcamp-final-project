@@ -42,7 +42,7 @@ const CATEGORY = ["ALL", "MUSIC", "EVENT - ART", "SPORT"];
 const Checkbox = () => {
   return (
     <div>
-      <div className="card p-3 mb-4">
+      <div className="card p-3 mb-4 bg-secondary">
         <h6 className="m-0">CITY</h6>
         <hr />
         <div style={{ height: "35rem" }} className="overflow-scroll">
@@ -61,7 +61,7 @@ const Checkbox = () => {
           ))}
         </div>
       </div>
-      <div className="card p-3 mb-4">
+      <div className="card p-3 mb-4 bg-secondary">
         <h6 className="m-0">CATEGORY</h6>
         <hr />
         <div>
@@ -80,10 +80,10 @@ const Checkbox = () => {
           ))}
         </div>
       </div>
-      <div className="card p-3 mb-4">
+      <div className="card p-3 mb-4  bg-secondary">
         <h6 className="m-0">DATE</h6>
         <hr/>
-        <input type="date" className="p-2 border-0 rounded bg-secondary"></input>
+        <input type="date" className="p-2 border-0 rounded"></input>
       </div>
     </div>
   );
