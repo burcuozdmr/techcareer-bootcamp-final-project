@@ -45,7 +45,7 @@ const Checkbox = () => {
       <div className="card p-3 mb-4 bg-secondary">
         <h6 className="m-0">CITY</h6>
         <hr />
-        <div style={{ height: "35rem" }} className="overflow-scroll">
+        <div style={{ height: "34rem" }} className="overflow-y-scroll">
           {CITIES.map((city) => (
             <div class="form-check">
               <input

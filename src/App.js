@@ -8,8 +8,9 @@ import EventsPage from './pages/EventsPage'
 const router = createBrowserRouter([
   {path:'/', element:<Root/>,children :[
     {index:true, element: <HomePage/>},
-    {path:':category', element: <EventsPage/>},
-    {path:':category/:eventId', element: <EventDetailPage/>}
+    {path:'events', element: <EventsPage/>},
+    {path:'events/:category', element: <EventsPage/>},
+    {path:'events/:category/:eventId', element: <EventDetailPage/>}
   ]}
 ])
 

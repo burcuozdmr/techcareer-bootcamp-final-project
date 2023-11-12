@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Pagination from "./Pagination";
 import Checkbox from "./Checkbox";
-import classes from './Events.module.css'
+import classes from "./Events.module.css";
 
 const CARDS = [
   {
@@ -87,10 +87,29 @@ const CARDS = [
 ];
 
 const Events = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const eventsPerPage = 12;
+
+  const currentEvents = CARDS.slice(
+    (currentPage - 1) * eventsPerPage,
+    currentPage * eventsPerPage
+  );
+  
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
+  useEffect(() => {
+    const element = document.getElementById("allEvents");
+    const topPosition = element.offsetTop;
+    window.scrollTo({ top: topPosition, behavior: "smooth" });
+  }, [currentPage]);
+
   return (
     <div
-      className={`container card p-4 border-0 ${classes['bg-mainColor']}`}
+      className={`container card p-4 border-0 ${classes["bg-mainColor"]}`}
       style={{ marginTop: "20rem", marginBottom: "4rem" }}
+      id="allEvents"
     >
       <div className="card-header">
         <h4>TITLE</h4>
@@ -100,16 +119,19 @@ const Events = () => {
           <div className="col-lg-2 col-sm-4">
             <Checkbox></Checkbox>
             <div class="d-grid col mx-auto">
-              <button className={`btn btn-primary border-0 ${classes['bg-secondaryColor']}`} type="button">
+              <button
+                className={`btn btn-primary mt-2 mb-4 border-0 ${classes["bg-secondaryColor"]}`}
+                type="button"
+              >
                 Filter
               </button>
             </div>
           </div>
           <div className="col-lg-10 col-sm-8">
             <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
-              {CARDS.map((card) => (
+              {currentEvents.map((card) => (
                 <div className="col" key={card.id}>
-                  <div class="card bg-secondary" style={{'cursor':'pointer'}}>
+                  <div class="card bg-secondary" style={{ cursor: "pointer" }}>
                     <img
                       src={card.image}
                       class="card-img-top"
@@ -123,7 +145,11 @@ const Events = () => {
                 </div>
               ))}
             </div>
-            <Pagination></Pagination>
+            <Pagination
+              eventsPerPage={eventsPerPage}
+              totalEvents={CARDS.length}
+              onPageChange={handlePageChange}
+            ></Pagination>
           </div>
         </div>
       </div>
