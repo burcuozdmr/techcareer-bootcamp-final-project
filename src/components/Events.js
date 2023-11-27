@@ -3,94 +3,13 @@ import Pagination from "./Pagination";
 import Checkbox from "./Checkbox";
 import classes from "./Events.module.css";
 
-const CARDS = [
-  {
-    id: "e1",
-    title: "e1",
-    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
-  },
-  {
-    id: "e2",
-    title: "e1",
-    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
-  },
-  {
-    id: "e3",
-    title: "e1",
-    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
-  },
-  {
-    id: "e4",
-    title: "e1",
-    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
-  },
-  {
-    id: "e5",
-    title: "e1",
-    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
-  },
-  {
-    id: "e6",
-    title: "e1",
-    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
-  },
-  {
-    id: "e7",
-    title: "e1",
-    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
-  },
-  {
-    id: "e8",
-    title: "e1",
-    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
-  },
-  {
-    id: "e9",
-    title: "e1",
-    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
-  },
-  {
-    id: "e10",
-    title: "e1",
-    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
-  },
-  {
-    id: "e11",
-    title: "e1",
-    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
-  },
-  {
-    id: "e12",
-    title: "e1",
-    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
-  },
-  {
-    id: "e13",
-    title: "e1",
-    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
-  },
-  {
-    id: "e14",
-    title: "e1",
-    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
-  },
-  {
-    id: "e15",
-    title: "e1",
-    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
-  },
-  {
-    id: "e16",
-    title: "e1",
-    image: "https://piktochart.com/wp-content/uploads/2018/02/26-5029435.jpg",
-  },
-];
 
-const Events = () => {
+
+const Events = ({events}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const eventsPerPage = 12;
 
-  const currentEvents = CARDS.slice(
+  const currentEvents = events.slice(
     (currentPage - 1) * eventsPerPage,
     currentPage * eventsPerPage
   );
@@ -133,7 +52,7 @@ const Events = () => {
                 <div className="col" key={card.id}>
                   <div class="card bg-secondary" style={{ cursor: "pointer" }}>
                     <img
-                      src={card.image}
+                      src={card.imageUrl}
                       class="card-img-top"
                       alt=""
                       style={{ height: "18rem" }}
@@ -147,7 +66,7 @@ const Events = () => {
             </div>
             <Pagination
               eventsPerPage={eventsPerPage}
-              totalEvents={CARDS.length}
+              totalEvents={events.length}
               onPageChange={handlePageChange}
             ></Pagination>
           </div>

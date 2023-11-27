@@ -8,7 +8,6 @@ const AdminAddNewEventModal = (props) => {
   const [categoryValue, setCategoryValue] = useState("");
   const [imageURLValue, setImageURLValue] = useState("");
   const [infoValue, setInfoValue] = useState("");
-  const [show, setShow] = useState(false);
 
   const inputChangeHandler = (event) => {
     const name = event.target.name;
@@ -16,22 +15,16 @@ const AdminAddNewEventModal = (props) => {
 
     if (name === "name") {
       setNameValue(value);
-      console.log(value);
     } else if (name === "date") {
       setDateValue(value);
-      console.log(value);
     } else if (name === "location") {
       setLocationValue(value);
-      console.log(value);
     } else if (name === "category") {
       setCategoryValue(value);
-      console.log(value);
     } else if (name === "imageURL") {
       setImageURLValue(value);
-      console.log(value);
     } else if (name === "info") {
       setInfoValue(value);
-      console.log(value);
     }
   };
 
@@ -53,19 +46,19 @@ const AdminAddNewEventModal = (props) => {
       if (nameValue === "") {
         document.getElementById("name").classList.add("is-invalid");
       }
-      if (dateValue === "") {
+      else if (dateValue === "") {
         document.getElementById("date").classList.add("is-invalid");
       }
-      if (locationValue === "") {
+      else if (locationValue === "") {
         document.getElementById("location").classList.add("is-invalid");
       }
-      if (categoryValue === "Category") {
+      else if (categoryValue === "Category") {
         document.getElementById("category").classList.add("is-invalid");
       }
-      if (imageURLValue === "") {
+      else if (imageURLValue === "") {
         document.getElementById("image").classList.add("is-invalid");
       }
-      if (infoValue === "") {
+      else if (infoValue === "") {
         document.getElementById("info").classList.add("is-invalid");
       }
     }
