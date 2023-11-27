@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../../assets/logo.png";
 import classes from "./Navbar.module.css";
 import { useEffect, useState } from "react";
-import {Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -30,7 +30,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container-fluid container mt-3 mb-3 d-flex justify-content-between ">
-        <Link to="/" className="navbar-brand " >
+        <Link to="/" className="navbar-brand ">
           <div>
             <img src={logo} alt="" className={classes.logoImg}></img>
           </div>
@@ -49,28 +49,40 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 nav-underline ">
             <li className="nav-item">
-              <Link to="/"  className="nav-link active " aria-current="page" >
+              <Link to="/" className="nav-link active " aria-current="page">
                 <button type="button" className="btn rounded-pill fs-6 fw-bold">
                   HOME
                 </button>
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/search-result" className="nav-link  " aria-current="page" >
+              <Link
+                to="/search-result"
+                className="nav-link  "
+                aria-current="page"
+              >
                 <button type="button" className="btn rounded-pill fs-6 fw-bold">
                   MUSIC
                 </button>
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/search-result" className="nav-link  " aria-current="page">
+              <Link
+                to="/search-result"
+                className="nav-link  "
+                aria-current="page"
+              >
                 <button type="button" className="btn rounded-pill fs-6 fw-bold">
                   EVENTS
                 </button>
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/search-result" className="nav-link  " aria-current="page">
+              <Link
+                to="/search-result"
+                className="nav-link  "
+                aria-current="page"
+              >
                 <button type="button" className="btn rounded-pill fs-6 fw-bold">
                   SPORT
                 </button>
@@ -85,13 +97,13 @@ const Navbar = () => {
             </li>
           </ul>
           <div>
-            <Link to="/admin-panel">
-            <button
-              type="button"
-              className={`btn btn-lg rounded-pill fw-bold px-4 ${classes["bg-secondaryColor"]}`}
-            >
-              LOGIN
-            </button>
+            <Link to="/admin">
+              <button
+                type="button"
+                className={`btn btn-lg rounded-pill fw-bold px-4 ${classes["bg-secondaryColor"]}`}
+              >
+                LOGIN
+              </button>
             </Link>
           </div>
         </div>

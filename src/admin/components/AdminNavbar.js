@@ -7,11 +7,9 @@ const AdminNavbar = () => {
   return (
     <nav className="navbar pt-3 pb-3 bg-mainLightColor">
       <div className="container">
-        <Link to="/admin-panel" >
         <a className="navbar-brand" href="#id">
           <img src={logo} alt="Bootstrap" width="300" height="auto" />
         </a>
-      </Link>
         <button
           type="button"
           class="btn btn-lg btn-secondary border-0 rounded-pill p-3"
@@ -56,9 +54,15 @@ const AdminNavbar = () => {
                 >
                   Close
                 </button>
-                <button type="button" class="btn btn-danger" onClick={event => window.location.href="/"}>
-                  Log out
-                </button>
+               
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    onClick={(event) => (window.location.href = "/")}
+                  >
+                    Log out
+                  </button>
+                
               </div>
             </div>
           </div>
