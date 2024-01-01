@@ -1,43 +1,52 @@
-import React from 'react'
-import VisualSlide from '../components/shared/VisualSlide'
-import Footer from '../components/shared/Footer'
-import { Outlet } from 'react-router-dom'
-import { useLoaderData } from 'react-router-dom'
-import { getDatabase, ref, get } from 'firebase/database';
-import { firebaseApp} from '../store/firebaseApp';
+import React, { Suspense } from "react";
+import VisualSlide from "../components/shared/VisualSlide";
+import Footer from "../components/shared/Footer";
+import { Outlet } from "react-router-dom";
+import { useLoaderData, json, defer, Await } from "react-router-dom";
+import { getDatabase, ref, get } from "firebase/database";
+import { firebaseApp } from "../store/firebaseApp";
 
 const Root = () => {
-  const events = useLoaderData();
+  const {events} = useLoaderData();
   return (
     <>
-      <VisualSlide events={events}></VisualSlide>
+      <Suspense fallback={ <p style={{textAlign:'center'}}> Loading...</p>}>
+        <Await resolve={events}>
+          {(events) => <VisualSlide events={events}></VisualSlide>}
+        </Await>
+      </Suspense>
       <Outlet></Outlet>
       <Footer></Footer>
     </>
-  )
-}
+  );
+};
 
-export default Root
+export default Root;
 
-export async function loader() {
-  
+
+async function loadEvents(){
   try {
     const database = getDatabase(firebaseApp);
-    const eventsRef = ref(database, 'events');
+    const eventsRef = ref(database, "events");
     const snapshot = await get(eventsRef);
 
-    if(snapshot.exists()){
-
+    if (snapshot.exists()) {
       const data = snapshot.val();
-      console.log( data);
+      console.log(data);
       return data;
-    }else{
-      console.error('Veri bulunamadı');
+    } else {
+      console.error("Veri bulunamadı");
       return null;
     }
   } catch (error) {
-    console.error('Veri çekme hatası:', error);
+    console.error("Veri çekme hatası:", error);
     return null;
   }
+}
 
+
+export function loader() {
+  return defer({
+    events : loadEvents(),
+  })
 }
