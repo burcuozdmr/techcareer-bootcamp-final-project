@@ -6,6 +6,7 @@ import EventDetailPage from "./pages/EventDetailPage";
 import EventsPage, { loader as eventsLoader } from "./pages/EventsPage";
 import AdminPage from "./pages/AdminPage";
 import uploadDataToFirebase from "./store/dataUploader";
+import AdminLogIn from "./admin/components/AdminLogIn";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,8 @@ const router = createBrowserRouter([
       { path: "events/:category/:eventId", element: <EventDetailPage /> },
     ],
   },
-  { path: "/admin", element: <AdminPage /> },
+  { path: "/logIn", element: <AdminLogIn/> },
+  { path: "/admin", element: <AdminPage/> },
 ]);
 
 const App = () => {
