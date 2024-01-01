@@ -8,22 +8,22 @@ import classes from "./VisualSlide.module.css";
 import Navbar from "./Navbar";
 import axios from "axios";
 
-const VisualSlide = () => {
+const VisualSlide = ({ events }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
-  const [data, setData] = useState([]);
+  const musicEvents = events.filter((event) => event.category === "Music");
+  const sportEvents = events.filter((event) => event.category === "Sport");
+  const artEvents = events.filter((event) => event.category === "Art");
 
-  useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/photos?_start=0&_limit=8")
-      .then((response) => {
-        setData(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error("Fetching error: ", error);
-      });
-  }, []);
+  
+  const selectedMusicEvents = musicEvents.slice(0, 3);
+  const selectedSportEvents = sportEvents.slice(0, 3);
+  const selectedArtEvents = artEvents.slice(0, 2);
+  const selectedEvents = [
+    ...selectedMusicEvents,
+    ...selectedSportEvents,
+    ...selectedArtEvents,
+  ];
 
   return (
     <section className={classes.image}>
@@ -53,23 +53,22 @@ const VisualSlide = () => {
         className={classes.swiper}
         style={{ paddingTop: "150px" }}
       >
-        {data.map((item) => (
+        {selectedEvents.map((item) => (
           <SwiperSlide
-          key={item.id}
+            key={item.id}
             style={{
               boxShadow:
-                activeSlide === item.id -1 ? "1px 1px 15px 4px #31d7a9" : "none",
+                activeSlide === item.id - 1
+                  ? "1px 1px 15px 4px #31d7a9"
+                  : "none",
               transition: "border 0.3s, box-shadow 0.3s",
             }}
-            className={classes['swiper-slide']}
+            className={classes["swiper-slide"]}
           >
             <div className={classes["slide-content"]}>
-              <img
-                src={item.url} 
-                alt=""
-              />
+              <img src={item.imageUrl} alt="" />
               <div className={classes.overlay}>
-                <h6 className="text-light">Title</h6>
+                <h6 className="text-light">{item.title}</h6>
               </div>
             </div>
           </SwiperSlide>

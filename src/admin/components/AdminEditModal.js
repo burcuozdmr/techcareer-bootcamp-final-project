@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 const AdminEditModal = (props) => {
+  const event = props.event;
   const [edit, setEdit] = useState(true);
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -21,19 +22,19 @@ const AdminEditModal = (props) => {
 
     if (name === "name") {
       setName(value);
-      console.log(value);
+     
     } else if (name === "date") {
       setDate(value);
-      console.log(value);
+      
     } else if (name === "location") {
       setLocation(value);
-      console.log(value);
+   
     } else if (name === "category") {
       setCategory(value);
-      console.log(value);
+
     } else if (name === "info") {
       setInfo(value);
-      console.log(value);
+   
     }
   };
   return (
@@ -57,7 +58,7 @@ const AdminEditModal = (props) => {
           <div class="modal-body row m-4">
             <div className="col-sm-7 col-lg-4 mb-5">
               <img
-                src={props.data.imageURLValue}
+                src={event.imageUrl}
                 alt=""
                 className="me-5 img-fluid img-thumbnail"
                 style={{ width: "30rem" }}
@@ -70,7 +71,7 @@ const AdminEditModal = (props) => {
                   name="name"
                   id="disabledInput"
                   class="form-control fs-2"
-                  placeholder={props.data.nameValue}
+                  placeholder={event.title}
                   disabled={edit}
                   onChange={changeInputHandler}
                   value={name}
@@ -86,7 +87,7 @@ const AdminEditModal = (props) => {
                   name="date"
                   class="form-control "
                   id="recipient-name"
-                  value={props.data.dateValue}
+                  value={event.date}
                   disabled={edit}
                   onChange={changeInputHandler}
                 />
@@ -100,7 +101,7 @@ const AdminEditModal = (props) => {
                   name="location"
                   class="form-control "
                   id="recipient-name"
-                  placeholder={props.data.locationValue}
+                  placeholder={event.location}
                   disabled={edit}
                   onChange={changeInputHandler}
                   value={location}
@@ -119,25 +120,25 @@ const AdminEditModal = (props) => {
                 >
                   <option
                     value="Category"
-                    selected={props.data.categoryValue === "Category"}
+                    selected={event.category === "Category"}
                   >
                     Category
                   </option>
                   <option
                     value="Music"
-                    selected={props.data.categoryValue === "Music"}
+                    selected={event.category === "Music"}
                   >
                     Music
                   </option>
                   <option
                     value="Events-Art"
-                    selected={props.data.categoryValue === "Events-Art"}
+                    selected={event.category === "Art"}
                   >
                     Events - Art
                   </option>
                   <option
                     value="Sport"
-                    selected={props.data.categoryValue === "Sport"}
+                    selected={event.category === "Sport"}
                   >
                     Sport
                   </option>
@@ -153,7 +154,7 @@ const AdminEditModal = (props) => {
                   class="form-control"
                   id="message-text"
                   disabled={edit}
-                  placeholder={props.data.infoValue}
+                  placeholder={event.shortInformation}
                   onChange={changeInputHandler}
                 ></textarea>
               </div>

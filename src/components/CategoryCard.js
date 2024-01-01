@@ -9,20 +9,8 @@ import "swiper/css/pagination";
 import { Autoplay, FreeMode, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
 
-function CategoryCard({ title ,category}) {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/photos?_start=0&_limit=8")
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.error("Fetching error: ", error);
-      });
-  }, []);
-
+function CategoryCard({ title ,category, events}) {
+  
   return (
     <>
       <div className="container mb-4 mt-2">
@@ -68,10 +56,10 @@ function CategoryCard({ title ,category}) {
               modules={[Autoplay, FreeMode, Pagination]}
               className="pb-5 pt-4"
             >
-              {data.map((item) => (
+              {events.map((item) => (
                 <SwiperSlide key={item.id}>
                   <div className="slider-item">
-                    <img src={item.thumbnailUrl} className="" alt="..." />
+                    <img src={item.imageUrl} className="" alt="..." />
                     <div className="overlay overflow-hidden d-flex align-items-center">
                       <h6 className="ps-2 text-capitalize fw-light">
                         {item.title}

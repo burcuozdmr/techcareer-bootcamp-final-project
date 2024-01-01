@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import Pagination from "./Pagination";
 import Checkbox from "./Checkbox";
 import classes from "./Events.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useParams} from "react-router-dom";
 
 const Events = ({ events }) => {
-  const navigate = useNavigate();
+  const { category }= useParams();
+  const usingEvents = events.filter((event) => event.category === category);
+
   const [currentPage, setCurrentPage] = useState(1);
   const eventsPerPage = 12;
 
-  const currentEvents = events.slice(
+  const currentEvents = usingEvents.slice(
     (currentPage - 1) * eventsPerPage,
     currentPage * eventsPerPage
   );
@@ -31,7 +33,7 @@ const Events = ({ events }) => {
       id="allEvents"
     >
       <div className="card-header">
-        <h4>TITLE</h4>
+        <h4>{category}</h4>
       </div>
       <div className="card-body">
         <div className="row pt-3">
@@ -71,7 +73,7 @@ const Events = ({ events }) => {
             </div>
             <Pagination
               eventsPerPage={eventsPerPage}
-              totalEvents={events.length}
+              totalEvents={usingEvents.length}
               onPageChange={handlePageChange}
             ></Pagination>
           </div>

@@ -5,7 +5,7 @@ import AdminCards from "./AdminCards";
 import { useState } from "react";
 
 
-const AdminTotal = () => {
+const AdminTotal = ({events}) => {
   const [sendData, setSendData] = useState("");
 
   const eventDataHandler = (eventData) => {
@@ -16,7 +16,7 @@ const AdminTotal = () => {
     <>
       <AdminNavbar></AdminNavbar>
       <AdminSearch onEventData={eventDataHandler}></AdminSearch>
-      <AdminCards sendData={sendData}></AdminCards>
+      <AdminCards sendData={sendData} events ={events}></AdminCards>
     </>
   );
 };
