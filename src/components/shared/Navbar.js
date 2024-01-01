@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../../assets/logo.png";
 import classes from "./Navbar.module.css";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -30,11 +30,11 @@ const Navbar = () => {
       }`}
     >
       <div className="container-fluid container mt-3 mb-3 d-flex justify-content-between ">
-        <Link to="/" className="navbar-brand ">
+        <NavLink to="/" className="navbar-brand ">
           <div>
             <img src={logo} alt="" className={classes.logoImg}></img>
           </div>
-        </Link>
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -49,47 +49,54 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 nav-underline ">
             <li className="nav-item">
-              <Link to="/" className="nav-link active " aria-current="page">
+              <NavLink to="/" className="nav-link" activeClassName="active" aria-current="page"
+              end>
                 <button type="button" className="btn rounded-pill fs-6 fw-bold">
                   HOME
                 </button>
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
-                to="/search-result"
-                className="nav-link  "
+              <NavLink
+                to="/events/Music"
+                activeClassName="active"
+                className="nav-link "
                 aria-current="page"
+                end
               >
                 <button type="button" className="btn rounded-pill fs-6 fw-bold">
                   MUSIC
                 </button>
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
-                to="/search-result"
+              <NavLink
+                to="/events/Art"
+                activeClassName="active"
                 className="nav-link  "
                 aria-current="page"
+                end
               >
                 <button type="button" className="btn rounded-pill fs-6 fw-bold">
-                  EVENTS
+                  ART
                 </button>
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
-                to="/search-result"
+              <NavLink
+                to="/events/Sport"
+                activeClassName="active"
                 className="nav-link  "
                 aria-current="page"
+                end
               >
                 <button type="button" className="btn rounded-pill fs-6 fw-bold">
                   SPORT
                 </button>
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link " aria-current="page" href="#id">
+              <a className="nav-link " aria-current="page" href="#contact">
                 <button type="button" className="btn rounded-pill fs-6 fw-bold">
                   CONTACT
                 </button>

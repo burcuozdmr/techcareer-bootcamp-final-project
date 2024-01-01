@@ -7,8 +7,9 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { Autoplay, FreeMode, Pagination } from "swiper/modules";
+import { Link } from "react-router-dom";
 
-function CategoryCard({ title }) {
+function CategoryCard({ title ,category}) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -30,12 +31,13 @@ function CategoryCard({ title }) {
             <legend className="col-lg-10  col-sm-9 text-light fw-semibold fs-5 ">
               {title}
             </legend>
-            <button
-              type="button"
-              class="btn border-0 col-lg-2 col-sm-3 secondaryColor text-end"
+            <Link
+              to={`/events/${category}`}
+              className="btn border-0 col-lg-2 col-sm-3 secondaryColor text-end"
+              end
             >
-              View More <i class="fa-solid fa-arrow-right"></i>
-            </button>
+              View More <i className="fa-solid fa-arrow-right"></i>
+            </Link>
           </div>
           <div className="card-body">
             <Swiper

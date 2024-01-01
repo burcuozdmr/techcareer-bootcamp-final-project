@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Pagination from "./Pagination";
 import Checkbox from "./Checkbox";
 import classes from "./Events.module.css";
+import { Link, useNavigate } from "react-router-dom";
 
-
-
-const Events = ({events}) => {
+const Events = ({ events }) => {
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const eventsPerPage = 12;
 
@@ -13,7 +13,7 @@ const Events = ({events}) => {
     (currentPage - 1) * eventsPerPage,
     currentPage * eventsPerPage
   );
-  
+
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
@@ -50,17 +50,22 @@ const Events = ({events}) => {
             <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
               {currentEvents.map((card) => (
                 <div className="col" key={card.id}>
-                  <div class="card bg-secondary" style={{ cursor: "pointer" }}>
-                    <img
-                      src={card.imageUrl}
-                      class="card-img-top"
-                      alt=""
-                      style={{ height: "18rem" }}
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title">{card.title}</h5>
+                  <Link to={`/events/${card.category}/${card.id}`}>
+                    <div
+                      class="card bg-secondary"
+                      style={{ cursor: "pointer" }}
+                    >
+                      <img
+                        src={card.imageUrl}
+                        class="card-img-top"
+                        alt=""
+                        style={{ height: "18rem" }}
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">{card.title}</h5>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               ))}
             </div>
