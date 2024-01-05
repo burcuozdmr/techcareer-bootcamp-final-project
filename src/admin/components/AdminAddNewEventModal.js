@@ -1,5 +1,10 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { ref, set, push } from "firebase/database";
+import { database } from "../../store/firebaseApp";
+import { onValue } from 'firebase/database';
+
+
 
 const AdminAddNewEventModal = (props) => {
   const [nameValue, setNameValue] = useState("");
@@ -8,6 +13,7 @@ const AdminAddNewEventModal = (props) => {
   const [categoryValue, setCategoryValue] = useState("");
   const [imageURLValue, setImageURLValue] = useState("");
   const [infoValue, setInfoValue] = useState("");
+  const [events, setEvents] = useState([]);
 
   const inputChangeHandler = (event) => {
     const name = event.target.name;
@@ -28,37 +34,49 @@ const AdminAddNewEventModal = (props) => {
     }
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async(event) => {
     event.preventDefault();
 
     const inputData = {
-      nameValue,
-      dateValue,
-      locationValue,
-      categoryValue,
-      imageURLValue,
-      infoValue,
+      title: nameValue,
+      date: dateValue,
+      location: locationValue,
+      category: categoryValue,
+      imageUrl: imageURLValue,
+      shortInformation: infoValue,
     };
 
     if (Object.values(inputData).every((value) => value !== "")) {
-      props.onData(inputData);
+      try {
+        // Veritabanındaki "events" referansını alın
+        const eventsRef = ref(database, 'events');
+  
+        // Yeni bir ID ile veriyi ekleyin
+        const newEventRef = push(eventsRef);
+  
+        // Yeni eklenen verinin ID'sini alın
+        const newEventId = newEventRef.key;
+  
+        // Veriyi ekleyin
+        await set(newEventRef, inputData);
+  
+        console.log('Veri başarıyla eklendi. Yeni veri ID:', newEventId);
+        setEvents((prevEvents) => [...prevEvents, { id: newEventId, ...inputData }]);
+      } catch (error) {
+        console.error('Veri eklenirken bir hata oluştu:', error);
+      }
     } else {
       if (nameValue === "") {
         document.getElementById("name").classList.add("is-invalid");
-      }
-      else if (dateValue === "") {
+      } else if (dateValue === "") {
         document.getElementById("date").classList.add("is-invalid");
-      }
-      else if (locationValue === "") {
+      } else if (locationValue === "") {
         document.getElementById("location").classList.add("is-invalid");
-      }
-      else if (categoryValue === "Category") {
+      } else if (categoryValue === "Category") {
         document.getElementById("category").classList.add("is-invalid");
-      }
-      else if (imageURLValue === "") {
+      } else if (imageURLValue === "") {
         document.getElementById("image").classList.add("is-invalid");
-      }
-      else if (infoValue === "") {
+      } else if (infoValue === "") {
         document.getElementById("info").classList.add("is-invalid");
       }
     }
@@ -70,6 +88,29 @@ const AdminAddNewEventModal = (props) => {
     setImageURLValue("");
     setInfoValue("");
   };
+
+
+
+
+  
+  useEffect(() => {
+    // Veritabanındaki "events" referansındaki değişiklikleri dinle
+    const eventsRef = ref(database, "events");
+    onValue(eventsRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        // Veri varsa, setEvents ile state'i güncelle
+        const eventsArray = Object.entries(data).map(([id, eventData]) => ({
+          id,
+          ...eventData,
+        }));
+        setEvents(eventsArray);
+      } else {
+        // Veri yoksa, setEvents ile state'i boş bir dizi yap
+        setEvents([]);
+      }
+    });
+  }, []); 
 
   return (
     <div

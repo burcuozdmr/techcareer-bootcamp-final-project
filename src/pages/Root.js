@@ -1,13 +1,14 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState, useEffect} from "react";
 import VisualSlide from "../components/shared/VisualSlide";
 import Footer from "../components/shared/Footer";
 import { Outlet } from "react-router-dom";
 import { useLoaderData, json, defer, Await } from "react-router-dom";
-import { getDatabase, ref, get } from "firebase/database";
+import { getDatabase, ref, get, onValue } from "firebase/database";
 import { firebaseApp } from "../store/firebaseApp";
 
 const Root = () => {
   const {events} = useLoaderData();
+
   return (
     <>
       <Suspense fallback={ <p style={{textAlign:'center'}}> Loading...</p>}>
@@ -25,6 +26,7 @@ export default Root;
 
 
 async function loadEvents(){
+  
   try {
     const database = getDatabase(firebaseApp);
     const eventsRef = ref(database, "events");
@@ -46,7 +48,14 @@ async function loadEvents(){
 
 
 export function loader() {
+  
   return defer({
     events : loadEvents(),
   })
 }
+
+
+
+
+
+

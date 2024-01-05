@@ -7,7 +7,7 @@ const AdminCards = (props) => {
   const data = props.sendData;
   const events = props.events;
 
-  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [selectedEvent, setSelectedEvent] = useState({});
 
   const handleViewMore = (event) => {
     setSelectedEvent(event);
