@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Root, { loader as eventsLoader }  from "./pages/Root";
+import Root, { loader as eventsLoader } from "./pages/Root";
 import HomePage from "./pages/HomePage";
 import EventDetailPage from "./pages/EventDetailPage";
 import EventsPage from "./pages/EventsPage";
-import AdminPage from "./pages/AdminPage";
-import uploadDataToFirebase from "./store/dataUploader";
+import AdminPage, { action as newEventAction } from "./pages/AdminPage";
 import AdminLogIn from "./admin/components/AdminLogIn";
 
 const router = createBrowserRouter([
@@ -14,7 +13,7 @@ const router = createBrowserRouter([
     element: <Root />,
     loader: eventsLoader,
     children: [
-      { index: true, element: <HomePage />,loader: eventsLoader, },
+      { index: true, element: <HomePage />, loader: eventsLoader },
       {
         path: "events",
         element: <EventsPage />,
@@ -24,14 +23,17 @@ const router = createBrowserRouter([
       { path: "events/:category/:eventId", element: <EventDetailPage /> },
     ],
   },
-  { path: "/logIn", element: <AdminLogIn/> },
-  { path: "/admin", element: <AdminPage/>,loader: eventsLoader, },
+  { path: "/logIn", element: <AdminLogIn /> },
+  {
+    path: "/admin",
+    element: <AdminPage />,
+    loader: eventsLoader,
+    action: newEventAction,
+  },
 ]);
 
 const App = () => {
-  useEffect(() => {
-    uploadDataToFirebase();
-  }, []);
+ 
 
   return <RouterProvider router={router}></RouterProvider>;
 };

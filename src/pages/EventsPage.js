@@ -10,7 +10,7 @@ const EventsPage = () => {
       <Filter></Filter>
       <Suspense fallback={<p style={{ textAlign: "center" }}> Loading...</p>}>
         <Await resolve={events}>
-          {(events) => <Events events={events}></Events>}
+          {(events) => <Events events={Object.values(events)}></Events>}
         </Await>
       </Suspense>
     </div>

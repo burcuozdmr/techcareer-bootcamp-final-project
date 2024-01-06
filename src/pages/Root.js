@@ -13,7 +13,7 @@ const Root = () => {
     <>
       <Suspense fallback={ <p style={{textAlign:'center'}}> Loading...</p>}>
         <Await resolve={events}>
-          {(events) => <VisualSlide events={events}></VisualSlide>}
+          {(events) => <VisualSlide events={Object.values(events)}></VisualSlide>}
         </Await>
       </Suspense>
       <Outlet></Outlet>
@@ -35,6 +35,7 @@ async function loadEvents(){
     if (snapshot.exists()) {
       const data = snapshot.val();
       console.log(data);
+      console.log(typeof data)
       return data;
     } else {
       console.error("Veri bulunamadı");

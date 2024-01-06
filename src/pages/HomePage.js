@@ -10,7 +10,7 @@ const HomePage = () => {
       <Filter></Filter>
       <Suspense fallback={<p style={{ textAlign: "center" }}> Loading...</p>}>
         <Await resolve={events}>
-          {(events) => <Categories events={events}></Categories>}
+          {(events) => <Categories events={Object.values(events)}></Categories>}
         </Await>
       </Suspense>
     </>

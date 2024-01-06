@@ -1,10 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ref, set, push } from "firebase/database";
 import { database } from "../../store/firebaseApp";
-import { onValue } from 'firebase/database';
-
-
+import { Form } from "react-router-dom";
 
 const AdminAddNewEventModal = (props) => {
   const [nameValue, setNameValue] = useState("");
@@ -13,7 +11,6 @@ const AdminAddNewEventModal = (props) => {
   const [categoryValue, setCategoryValue] = useState("");
   const [imageURLValue, setImageURLValue] = useState("");
   const [infoValue, setInfoValue] = useState("");
-  const [events, setEvents] = useState([]);
 
   const inputChangeHandler = (event) => {
     const name = event.target.name;
@@ -34,7 +31,7 @@ const AdminAddNewEventModal = (props) => {
     }
   };
 
-  const submitHandler = async(event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
     const inputData = {
@@ -49,21 +46,20 @@ const AdminAddNewEventModal = (props) => {
     if (Object.values(inputData).every((value) => value !== "")) {
       try {
         // Veritabanındaki "events" referansını alın
-        const eventsRef = ref(database, 'events');
-  
+        const eventsRef = ref(database, "events");
+
         // Yeni bir ID ile veriyi ekleyin
         const newEventRef = push(eventsRef);
-  
+
         // Yeni eklenen verinin ID'sini alın
         const newEventId = newEventRef.key;
-  
+
         // Veriyi ekleyin
         await set(newEventRef, inputData);
-  
-        console.log('Veri başarıyla eklendi. Yeni veri ID:', newEventId);
-        setEvents((prevEvents) => [...prevEvents, { id: newEventId, ...inputData }]);
+
+        console.log("Veri başarıyla eklendi. Yeni veri ID:", newEventId);
       } catch (error) {
-        console.error('Veri eklenirken bir hata oluştu:', error);
+        console.error("Veri eklenirken bir hata oluştu:", error);
       }
     } else {
       if (nameValue === "") {
@@ -89,29 +85,6 @@ const AdminAddNewEventModal = (props) => {
     setInfoValue("");
   };
 
-
-
-
-  
-  useEffect(() => {
-    // Veritabanındaki "events" referansındaki değişiklikleri dinle
-    const eventsRef = ref(database, "events");
-    onValue(eventsRef, (snapshot) => {
-      const data = snapshot.val();
-      if (data) {
-        // Veri varsa, setEvents ile state'i güncelle
-        const eventsArray = Object.entries(data).map(([id, eventData]) => ({
-          id,
-          ...eventData,
-        }));
-        setEvents(eventsArray);
-      } else {
-        // Veri yoksa, setEvents ile state'i boş bir dizi yap
-        setEvents([]);
-      }
-    });
-  }, []); 
-
   return (
     <div
       class="modal fade"
@@ -124,7 +97,7 @@ const AdminAddNewEventModal = (props) => {
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">
-              New message
+              New Event
             </h1>
             <button
               type="button"
@@ -133,8 +106,8 @@ const AdminAddNewEventModal = (props) => {
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">
-            <form>
+          <Form method="post">
+            <div class="modal-body">
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">
                   Name of the event:
@@ -219,24 +192,20 @@ const AdminAddNewEventModal = (props) => {
                   onChange={inputChangeHandler}
                 ></textarea>
               </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button
-              type="submit"
-              class="btn btn-primary"
-              onClick={submitHandler}
-            >
-              Add Event
-            </button>
-          </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Add Event
+              </button>
+            </div>
+          </Form>
         </div>
       </div>
     </div>
