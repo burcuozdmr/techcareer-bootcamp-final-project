@@ -9,8 +9,7 @@ import "swiper/css/pagination";
 import { Autoplay, FreeMode, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
 
-function CategoryCard({ title ,category, events}) {
-  
+function CategoryCard({ title, category, events }) {
   return (
     <>
       <div className="container mb-4 mt-2">
@@ -58,15 +57,17 @@ function CategoryCard({ title ,category, events}) {
             >
               {events.map((item) => (
                 <SwiperSlide key={item.id}>
-                  <div className="slider-item">
-                    <img src={item.imageUrl} className="" alt="..." />
-                    <div className="overlay overflow-hidden d-flex align-items-center">
-                      <h6 className="ps-2 text-capitalize fw-light">
-                        {item.title}
-                      </h6>
+                    <Link to={`/events/${category}/${item.id}`}>
+                    <div className="slider-item">
+                      <img src={item.imageUrl} className="" alt="..." />
+                      <div className="overlay overflow-hidden d-flex align-items-center">
+                        <h6 className="ps-2 text-capitalize fw-light">
+                          {item.title}
+                        </h6>
+                      </div>
                     </div>
-                  </div>
-                </SwiperSlide>
+                </Link>
+                  </SwiperSlide>
               ))}
             </Swiper>
           </div>

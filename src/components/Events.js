@@ -11,13 +11,29 @@ const Events = ({ events }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const eventsPerPage = 12;
 
-  const currentEvents = usingEvents.slice(
+  const [filteredEvents, setFilteredEvents] = useState(usingEvents);
+  const currentEvents = filteredEvents.slice(
     (currentPage - 1) * eventsPerPage,
     currentPage * eventsPerPage
   );
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
+  };
+
+  const handleFilterChange = (filter) => {
+    const { city, date } = filter;
+
+    // Şehir ve tarih bilgisine göre etkinlikleri filtreleme
+    let filtered = usingEvents;
+    if (city) {
+      filtered = filtered.filter((event) => event.city === city);
+    }
+    if (date) {
+      filtered = filtered.filter((event) => event.date === date);
+    }
+
+    setFilteredEvents(filtered);
   };
 
   useEffect(() => {
@@ -38,44 +54,42 @@ const Events = ({ events }) => {
       <div className="card-body">
         <div className="row pt-3">
           <div className="col-lg-2 col-sm-4">
-            <Checkbox></Checkbox>
-            <div class="d-grid col mx-auto">
-              <button
-                className={`btn btn-primary mt-2 mb-4 border-0 ${classes["bg-secondaryColor"]}`}
-                type="button"
-              >
-                Filter
-              </button>
-            </div>
+            <Checkbox onFilterChange={handleFilterChange}></Checkbox>
           </div>
           <div className="col-lg-10 col-sm-8">
             <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
-              {currentEvents.map((card) => (
-                <div className="col" key={card.id}>
-                  <Link to={`/events/${card.category}/${card.id}`}>
-                    <div
-                      class="card bg-secondary"
-                      style={{ cursor: "pointer" }}
-                    >
-                      <img
-                        src={card.imageUrl}
-                        class="card-img-top"
-                        alt=""
-                        style={{ height: "18rem" }}
-                      />
-                      <div class="card-body">
-                        <h5 class="card-title">{card.title}</h5>
+              {currentEvents.length === 0 ? (
+                <p className="fs-4"> No Results Found</p>
+              ) : (
+                currentEvents.map((card) => (
+                  <div className="col" key={card.id}>
+                    <Link to={`/events/${card.category}/${card.id}`}>
+                      <div
+                        class="card bg-secondary"
+                        style={{ cursor: "pointer" }}
+                      >
+                        <img
+                          src={card.imageUrl}
+                          class="card-img-top"
+                          alt=""
+                          style={{ height: "18rem" }}
+                        />
+                        <div class="card-body">
+                          <h5 class="card-title">{card.title}</h5>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                </div>
-              ))}
+                    </Link>
+                  </div>
+                ))
+              )}
             </div>
-            <Pagination
-              eventsPerPage={eventsPerPage}
-              totalEvents={usingEvents.length}
-              onPageChange={handlePageChange}
-            ></Pagination>
+            {currentEvents.length !== 0 && (
+              <Pagination
+                eventsPerPage={eventsPerPage}
+                totalEvents={filteredEvents.length}
+                onPageChange={handlePageChange}
+              ></Pagination>
+            )}
           </div>
         </div>
       </div>

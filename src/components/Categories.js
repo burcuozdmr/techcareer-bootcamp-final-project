@@ -3,7 +3,7 @@ import CategoryCard from './CategoryCard'
 
 
 const Categories = ({events}) => {
-  console.log(events)
+ 
   const musicEvents = events.filter((event) => event.category === 'Music');
   const artEvents = events.filter((event) => event.category === 'Art');
   const sportEvents = events.filter((event) => event.category === 'Sport');

@@ -33,7 +33,7 @@ export async function action ({request,params}){
     imageUrl : data.get('imageURL'),
   }
  
-  console.log(eventData);
+
 
   try {
     // Veritabanındaki "events" referansını alın

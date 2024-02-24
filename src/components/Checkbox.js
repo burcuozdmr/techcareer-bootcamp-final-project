@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import classes from "./Events.module.css";
 
 export const CITIES = [
   "Adana",
@@ -37,9 +38,30 @@ export const CITIES = [
   "İstanbul	",
   "İzmir",
 ];
-const CATEGORY = ["ALL", "MUSIC", "EVENT - ART", "SPORT"];
 
-const Checkbox = () => {
+const Checkbox = ({ onFilterChange }) => {
+  const [selectedCity, setselectedCity] = useState(null);
+  const [selectedDate, setselectedDate] = useState(null);
+
+  const handleCityChange = (city) => {
+    setselectedCity(city === selectedCity ? null : city);
+    onFilterChange({
+      city: city === selectedCity ? null : city,
+      date: selectedDate,
+    });
+  };
+  const handleDateChange = (date) => {
+    console.log(date);
+    setselectedDate(date);
+    onFilterChange({ city: selectedCity, date });
+  };
+
+  const handleReset  = () => {
+    setselectedCity(null);
+    setselectedDate(null);
+    onFilterChange({ city: null, date: null });
+  }
+
   return (
     <div>
       <div className="card p-3 mb-4 bg-secondary">
@@ -47,12 +69,14 @@ const Checkbox = () => {
         <hr />
         <div style={{ height: "34rem" }} className="overflow-y-scroll">
           {CITIES.map((city) => (
-            <div class="form-check">
+            <div class="form-check" key={city}>
               <input
                 class="form-check-input"
                 type="checkbox"
                 value=""
                 id="flexCheckDefault"
+                checked={selectedCity === city}
+                onChange={() => handleCityChange(city)}
               />
               <label class="form-check-label mb-2" for="flexCheckDefault">
                 {city}
@@ -61,29 +85,24 @@ const Checkbox = () => {
           ))}
         </div>
       </div>
-      <div className="card p-3 mb-4 bg-secondary">
-        <h6 className="m-0">CATEGORY</h6>
-        <hr />
-        <div>
-          {CATEGORY.map((item) => (
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-              <label class="form-check-label mb-2" for="flexCheckDefault">
-                {item}
-              </label>
-            </div>
-          ))}
-        </div>
-      </div>
       <div className="card p-3 mb-4  bg-secondary">
         <h6 className="m-0">DATE</h6>
-        <hr/>
-        <input type="date" className="p-2 border-0 rounded"></input>
+        <hr />
+        <input
+          type="date"
+          className="p-2 border-0 rounded"
+          value={selectedDate}
+          onChange={(e) => handleDateChange(e.target.value)}
+        ></input>
+      </div>
+      <div class="d-grid col mx-auto">
+        <button
+          className={`btn btn-primary mt-2 mb-4 border-0 ${classes["bg-secondaryColor"]}`}
+          type="button"
+          onClick={handleReset}
+        >
+          Reset
+        </button>
       </div>
     </div>
   );

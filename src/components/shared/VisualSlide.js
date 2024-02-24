@@ -7,6 +7,7 @@ import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 import classes from "./VisualSlide.module.css";
 import Navbar from "./Navbar";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const VisualSlide = ({ events }) => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -15,7 +16,6 @@ const VisualSlide = ({ events }) => {
   const sportEvents = events.filter((event) => event.category === "Sport");
   const artEvents = events.filter((event) => event.category === "Art");
 
-  
   const selectedMusicEvents = musicEvents.slice(0, 3);
   const selectedSportEvents = sportEvents.slice(0, 3);
   const selectedArtEvents = artEvents.slice(0, 2);
@@ -24,6 +24,7 @@ const VisualSlide = ({ events }) => {
     ...selectedSportEvents,
     ...selectedArtEvents,
   ];
+
 
   return (
     <section className={classes.image}>
@@ -65,12 +66,14 @@ const VisualSlide = ({ events }) => {
             }}
             className={classes["swiper-slide"]}
           >
-            <div className={classes["slide-content"]}>
-              <img src={item.imageUrl} alt="" />
-              <div className={classes.overlay}>
-                <h6 className="text-light">{item.title}</h6>
+            <Link to={`/events/${item.category}/${item.id}`}>
+              <div className={classes["slide-content"]}>
+                <img src={item.imageUrl} alt="" />
+                <div className={classes.overlay}>
+                  <h6 className="text-light">{item.title}</h6>
+                </div>
               </div>
-            </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>
