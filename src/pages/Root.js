@@ -34,8 +34,6 @@ async function loadEvents(){
 
     if (snapshot.exists()) {
       const data = snapshot.val();
-      console.log(data);
-      console.log(typeof data)
       return data;
     } else {
       console.error("Veri bulunamadı");

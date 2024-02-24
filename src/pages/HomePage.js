@@ -5,9 +5,10 @@ import { useLoaderData, Await } from "react-router-dom";
 
 const HomePage = () => {
   const { events } = useLoaderData();
+
   return (
     <>
-      <Filter></Filter>
+
       <Suspense fallback={<p style={{ textAlign: "center" }}> Loading...</p>}>
         <Await resolve={events}>
           {(events) => <Categories events={Object.values(events)}></Categories>}

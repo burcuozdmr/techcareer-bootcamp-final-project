@@ -1,6 +1,6 @@
 import React from "react";
 
-const CITIES = [
+export const CITIES = [
   "Adana",
   "Adıyaman",
   "Afyon",

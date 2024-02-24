@@ -6,6 +6,8 @@ import EventDetailPage from "./pages/EventDetailPage";
 import EventsPage from "./pages/EventsPage";
 import AdminPage, { action as newEventAction } from "./pages/AdminPage";
 import AdminLogIn from "./admin/components/AdminLogIn";
+import FilterResultPage from "./pages/FilterResultPage";
+import FilterRoot from "./pages/FilterRoot";
 
 const router = createBrowserRouter([
   {
@@ -13,7 +15,23 @@ const router = createBrowserRouter([
     element: <Root />,
     loader: eventsLoader,
     children: [
-      { index: true, element: <HomePage />, loader: eventsLoader },
+      {
+        path:'/',
+        element: <FilterRoot />,
+        loader: eventsLoader,
+        children: [
+          {
+            index: true,
+            element: <HomePage></HomePage>,
+            loader: eventsLoader,
+          },
+          {
+            path: "filter-result",
+            loader: eventsLoader,
+            element: <FilterResultPage />,
+          },
+        ],
+      },
       {
         path: "events",
         element: <EventsPage />,
@@ -33,8 +51,6 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
- 
-
   return <RouterProvider router={router}></RouterProvider>;
 };
 
