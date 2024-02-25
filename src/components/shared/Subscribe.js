@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import classes from "./Subscribe.module.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Subscribe = () => {
+  const inputRef = useRef(null)
+  const handleSubscribe = (e) => {
+    const value = inputRef.current.value;
+    if(value === ''){
+      toast.warn("Please write a valid email address");
+    }else{
+      toast.success("Awesome! You have successfully subscribed");
+    }
+    console.log("calıstın!");
+    e.preventDefault();
+  };
   return (
-    <div  className="position-relative z-2 " style={{height:'25vh'}}>
-      <section className='container' style={{width:'850px'}}>
-        <div className={classes['bg-mainColor']}></div>
+    <div className="position-relative z-2 " style={{ height: "25vh" }}>
+      <section className="container" style={{ maxWidth: "850px" }}>
+        <div className={classes["bg-mainColor"]}></div>
         <div
           className={`card border border-0 p-4 shadow-lg opacity-75 ${classes["bg-mainLightColor"]}`}
         >
@@ -20,29 +33,34 @@ const Subscribe = () => {
             </p>
 
             <div className="row">
-              <div className="col-6 mx-auto">
-                <div className="input-group mt-5  position-relative">
+              <div className="col-lg-6 col-md-6 mx-auto">
+                <form
+                  className="input-group mt-4  position-relative"
+                  onSubmit={handleSubscribe}
+                >
                   <input
-                    type="text"
-                    className="form-control p-4 rounded-pill bg-transparent"
+                    type="email"
+                    className={`form-control p-3 rounded-pill bg-transparent ${classes.i}`}
                     placeholder="Email Address"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
+                    ref={inputRef}
                   />
                   <button
-                    className={`btn rounded-pill position-absolute top-50 end-0 translate-middle-y p-3 px-4 me-2 fw-semibold ${classes["bg-secondaryColor"]}`}
-                    type="button"
+                    className={`btn rounded-pill position-absolute top-50 end-0 translate-middle-y p-3 px-3 fw-semibold ${classes["bg-secondaryColor"]} ${classes.b}`}
+                    type="submit"
                     id="button-addon2"
                   >
                     Subscribe
                   </button>
-                </div>
+                  <ToastContainer></ToastContainer>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </section>
-      </div>
+    </div>
   );
 };
 

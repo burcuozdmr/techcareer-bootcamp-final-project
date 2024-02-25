@@ -53,11 +53,11 @@ const Events = ({ events }) => {
       </div>
       <div className="card-body">
         <div className="row pt-3">
-          <div className="col-lg-2 col-sm-4">
+          <div className="col-lg-2 col-sm-4 col-md-3 order-xl-1 order-lg-1 order-sm-1 order-2">
             <Checkbox onFilterChange={handleFilterChange}></Checkbox>
           </div>
-          <div className="col-lg-10 col-sm-8">
-            <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
+          <div className="col-lg-10 col-sm-8 col-md-9 order-xl-2 order-lg-2 order-sm-2 order-1">
+            <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-xl-4 row-cols-lg-3 g-2 g-lg-3">
               {currentEvents.length === 0 ? (
                 <p className="fs-4"> No Results Found</p>
               ) : (
@@ -75,7 +75,7 @@ const Events = ({ events }) => {
                           style={{ height: "18rem" }}
                         />
                         <div class="card-body">
-                          <h5 class="card-title">{card.title}</h5>
+                          <h5 class={`card-title ${classes.eventTitle}`}>{card.title}</h5>
                         </div>
                       </div>
                     </Link>

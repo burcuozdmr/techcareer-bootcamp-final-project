@@ -1,12 +1,20 @@
-import React from 'react'
-import EventDetail from '../components/EventDetail'
+import React, { Suspense } from "react";
+import EventDetail from "../components/EventDetail";
+import { useLoaderData, Await } from "react-router-dom";
 
 const EventDetailPage = () => {
+  const { events } = useLoaderData();
   return (
     <div>
-      <EventDetail></EventDetail>
+      <Suspense fallback={<p style={{ textAlign: "center" }}> Loading...</p>}>
+        <Await resolve={events}>
+          {(events) => (
+            <EventDetail events={Object.values(events)}></EventDetail>
+          )}
+        </Await>
+      </Suspense>
     </div>
-  )
-}
+  );
+};
 
-export default EventDetailPage
+export default EventDetailPage;

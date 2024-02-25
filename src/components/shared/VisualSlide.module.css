@@ -13,18 +13,24 @@ body {
 }
 
 .swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 350px;
-  height: 350px;
+  background-position: center;  
+  background-color: rgba(250, 235, 215, 0.74);
+  width: 400px;
+  height: 320px;
   border-radius: 10px;
+  object-fit: contain;
+  overflow: hidden;
+  background-size: cover;
 }
 
 .swiper-slide img {
   display: block;
   width: 100%;
+  height: 100%;
   border-radius: 10px;
-  overflow: hidden;
+  object-fit: contain;
+  object-position: center;
+  
 }
 
 .secondary-color {
@@ -61,13 +67,28 @@ body {
 
 .overlay {
   position: absolute;
-  bottom: 0;
+  top: 288px;
   left: 0;
   width: 100%;
-  height: 10%;
-  background-color: rgba(182, 179, 179, 0.6);
+  
   z-index: 2;
   padding: 3px;
   text-align: center;
-  border-radius: 10px;
+  color: white;
+  text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
+             0px -5px 35px rgba(255,255,255,0.3); 
+  background-color:   #31d7a8dc;
+}
+@media only screen and (max-width: 380px) {
+  .swiper-slide {
+    width: 250px;
+    height: 200px;
+  }
+  .overlay {
+    top: 170px;
+  }
+  .textTitle{
+    font-size: 2px !important;
+    font-weight: 100;
+  }
 }

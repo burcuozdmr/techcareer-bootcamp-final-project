@@ -10,3 +10,15 @@
 .bg-mainLightColor {
   background-color: #0B2657 !important;
 }
+.b:hover{
+  color: #31d7a9 !important;
+  background-color: #fff !important;
+}
+@media only screen and (max-width: 380px) {
+  .b {
+    padding: 4px !important;
+  }
+  .i{
+    padding:  6px !important;
+  }
+}

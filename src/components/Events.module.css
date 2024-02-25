@@ -10,3 +10,8 @@
 .bg-mainLightColor {
   background-color: #0B2657 !important;
 }
+.eventTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

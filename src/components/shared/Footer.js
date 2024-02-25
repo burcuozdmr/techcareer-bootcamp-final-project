@@ -8,15 +8,15 @@ const Footer = () => {
     <footer id="contact">
       <Subscribe></Subscribe>
       <div
-        className={`card border-0   ${classes["bg-mainColor"]}`}
+        className={`card border-0 ${classes["bg-mainColor"]}`}
         style={{ paddingTop: "150px" }}
       >
         <div className="container p-4 ">
-          <div className="card-header p-4 d-flex justify-content-between">
-            <div>
+          <div className="card-header p-4 d-flex justify-content-between row">
+            <div className=" col-lg-7 col-sm mb-4">
               <img src={logo} alt="" className={classes.logoImg}></img>
             </div>
-            <div className="d-flex justify-content-between align-items-center gap-4">
+            <div className="d-flex justify-content-between align-items-center gap-4 col-lg-3 col-sm " >
               <span
                 className="border rounded-circle p-2 d-flex justify-content-center align-items-center"
                 style={{ width: "40px ", height: "40px" }}
@@ -30,7 +30,7 @@ const Footer = () => {
                 <i className="fa-brands fa-twitter fa-xl"></i>
               </span>
               <span
-                className="border rounded-circle p-2 d-flex justify-content-center align-items-center"
+                className="border rounded-circle p-2 d-flex justify-content-center align-items-center "
                 style={{ width: "40px ", height: "40px" }}
               >
                 <i className="fa-brands fa-instagram fa-xl"></i>
@@ -44,9 +44,9 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="card-body ">
-            <div className="row mx-auto">
-              <div className="col-3 d-flex justify-content-center">
+          <div className="card-body">
+            <div className="row ">
+              <div className="col-lg-3 col-md-6 col-sm-6  justify-content-center mb-3">
                 <div>
                   <h6 className="fw-bold mb-3">WHY EventHarbor ?</h6>
                   <ul
@@ -69,7 +69,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div className="col-4 d-flex justify-content-center">
+              <div className="col-lg-4 col-md-6 col-sm-6  justify-content-center mb-3">
                 <div>
                   <h6 className="fw-bold mb-3">CONTACT US</h6>
                   <ul
@@ -92,7 +92,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div className="col-5 d-flex justify-content-center">
+              <div className="col-lg-5 col-sm-12 d-flex justify-content-center">
                 <div>
                   <h6 className="fw-bold">LEAVE A MESSAGE</h6>
                   <div

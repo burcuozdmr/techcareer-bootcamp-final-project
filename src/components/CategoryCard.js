@@ -13,23 +13,29 @@ function CategoryCard({ title, category, events }) {
   return (
     <>
       <div className="container mb-4 mt-2">
-        <fieldset className="bg-mainColor rounded px-5 pb-3 pt-3 card border-0">
-          <div className="d-flex justif-content-between mt-3 p-3 card-header shadowColor">
-            <legend className="col-lg-10  col-sm-9 text-light fw-semibold fs-5 ">
-              {title}
-            </legend>
-            <Link
-              to={`/events/${category}`}
-              className="btn border-0 col-lg-2 col-sm-3 secondaryColor text-end"
-              end
-            >
-              View More <i className="fa-solid fa-arrow-right"></i>
-            </Link>
+        <fieldset className="bg-mainColor rounded pb-3 px-4 pt-3 card border-0">
+          <div className="mt-3  card-header shadowColor bg-color row">
+            <div className="col d-flex align-items-center">
+              <h6 className="text-light fw-semibold fs-5 p-0 ">{title}</h6>
+            </div>
+            <div className="col d-flex flex-row-reverse" >
+              <Link
+                to={`/events/${category}`}
+                className="btn border-0  secondaryColor "
+                end
+              >
+                View More <i className="fa-solid fa-arrow-right"></i>
+              </Link>
+            </div>
           </div>
           <div className="card-body">
             <Swiper
               slidesPerView={1}
               breakpoints={{
+                300: {
+                  slidesPerView: 1,
+                  spaceBetween: 5,
+                },
                 500: {
                   slidesPerView: 2,
                   spaceBetween: 5,
@@ -53,21 +59,25 @@ function CategoryCard({ title, category, events }) {
                 clickable: true,
               }}
               modules={[Autoplay, FreeMode, Pagination]}
-              className="pb-5 pt-4"
+              className=""
             >
               {events.map((item) => (
-                <SwiperSlide key={item.id}>
-                    <Link to={`/events/${category}/${item.id}`}>
-                    <div className="slider-item">
-                      <img src={item.imageUrl} className="" alt="..." />
+                <SwiperSlide key={item.id} className="slider-item">
+                  <Link to={`/events/${category}/${item.id}`}>
+                    <div className="">
+                      <img
+                        src={item.imageUrl}
+                        className="categoriesImg"
+                        alt="..."
+                      />
                       <div className="overlay overflow-hidden d-flex align-items-center">
-                        <h6 className="ps-2 text-capitalize fw-light">
+                        <h6 className="ps-2 text-capitalize fw-semibold  event-title">
                           {item.title}
                         </h6>
                       </div>
                     </div>
-                </Link>
-                  </SwiperSlide>
+                  </Link>
+                </SwiperSlide>
               ))}
             </Swiper>
           </div>

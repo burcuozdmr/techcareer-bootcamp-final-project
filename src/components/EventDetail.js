@@ -1,8 +1,11 @@
 import React from "react";
 import ScrollSpy from "./ScrollSpy";
+import { useParams} from "react-router-dom";
 
 
-const EventDetail = () => {
+const EventDetail = ({events}) => {
+  const {eventId} = useParams();
+  const foundEvent = events.find(event => Number(event.id )=== Number(eventId));
   return (
     <div className="container card mb-5 mt-5 border-0 bg-secondary p-5">
       <div className="row gap-4">
@@ -15,9 +18,10 @@ const EventDetail = () => {
           <div class="carousel-inner p-3">
             <div class="carousel-item active">
               <img
-                src="https://img.freepik.com/free-vector/music-event-poster-template-with-abstract-shapes_1361-1316.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699574400&semt=ais"
-                class="d-block mx-auto"
+                src={foundEvent.imageUrl}
+                class="d-block mx-auto "
                 alt="..."
+                style={{maxHeight: "400px"}}
               />
             </div>
             <div class="carousel-item">
@@ -56,7 +60,7 @@ const EventDetail = () => {
         </div>
         <div className="col-lg-5 col-sm-12 p-0">
           {/* <h3 className="mb-4">TITLE EVENT</h3> */}
-          <ScrollSpy></ScrollSpy>
+          <ScrollSpy foundEvent={foundEvent}></ScrollSpy>
           {/* <div className="card p-4">
           <p className="fs-5 fw-normal text-bg-secondary" >About Event</p>
             <p className="fw-light"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum

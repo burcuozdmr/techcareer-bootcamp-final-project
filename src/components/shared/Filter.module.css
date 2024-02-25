@@ -10,3 +10,9 @@
 .bg-mainLightColor {
   background-color: #0B2657 !important;
 }
+@media only screen and (max-width: 380px) {
+  .t{
+    font-size: 14px !important;
+    
+  }
+}

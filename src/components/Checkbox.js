@@ -63,8 +63,8 @@ const Checkbox = ({ onFilterChange }) => {
   }
 
   return (
-    <div>
-      <div className="card p-3 mb-4 bg-secondary">
+    <div className="row">
+      <div className="card p-3 mb-4 bg-secondary ">
         <h6 className="m-0">CITY</h6>
         <hr />
         <div style={{ height: "34rem" }} className="overflow-y-scroll">
@@ -85,7 +85,7 @@ const Checkbox = ({ onFilterChange }) => {
           ))}
         </div>
       </div>
-      <div className="card p-3 mb-4  bg-secondary">
+      <div className="card p-3 mb-4  bg-secondary ">
         <h6 className="m-0">DATE</h6>
         <hr />
         <input
@@ -95,7 +95,7 @@ const Checkbox = ({ onFilterChange }) => {
           onChange={(e) => handleDateChange(e.target.value)}
         ></input>
       </div>
-      <div class="d-grid col mx-auto">
+      <div class="d-grid  mx-auto">
         <button
           className={`btn btn-primary mt-2 mb-4 border-0 ${classes["bg-secondaryColor"]}`}
           type="button"

@@ -70,7 +70,7 @@ const VisualSlide = ({ events }) => {
               <div className={classes["slide-content"]}>
                 <img src={item.imageUrl} alt="" />
                 <div className={classes.overlay}>
-                  <h6 className="text-light">{item.title}</h6>
+                  <p className="textTitle fw-bold">{item.title}</p>
                 </div>
               </div>
             </Link>
