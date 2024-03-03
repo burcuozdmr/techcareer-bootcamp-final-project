@@ -76,17 +76,18 @@ This project is an event display system that allows users to browse and manage e
   - Leveraged action functions provided by React Router to manage page transitions and manipulate application state based on user interactions. This allowed for seamless page transitions and effective control over application flow.
 
 6. Data Management: 
-  -I improved my ability to manage data using state and props in React components. This is important for facilitating data communication between components.
+  - I improved my ability to manage data using state and props in React components. This is important for facilitating data communication between components.
 
 
 ## Creator
 
-- @burcuozdmr
+- [@burcuozdmr](https://github.com/burcuozdmr)
 
 ## Contributors
 
-- @beyazite
-- @nevzatgokcen
+- [@beyazite](https://github.com/beyazite)
+- [@nevzatgokcen](https://github.com/nevzatgokcen)
+
 
  I completed the project, which we started as a bootcamp final assignment as a group of three people, then continued alone. I made many changes to the initial application and made the website functional. As a result, I have knowledge of every aspect of the project and I have contributed to every aspect of it.
 
