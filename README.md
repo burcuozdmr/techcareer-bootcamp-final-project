@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# EventHarbor 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an event display system that allows users to browse and manage events across different categories such as Music, Art, and Sport. Users can view events, filter them by date, location, and event name, and also access detailed information, like date and time, location, ticket price etc., about each event on its detail page. Additionally, the project includes an admin panel for managing events in the database, allowing for the addition, deletion, and editing of events.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+- [Creator](#creator)
+- [Contributors](#contributors)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Overview
 
-### `npm test`
+### The challenge
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+- Browse Events by Category: Users can browse events categorized under Music, Art, and Sport.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Filter Events: Events can be filtered based on date, location, and event name.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Detailed Event Information: Users can view detailed information about each event including venue, date, time, ticket prices, etc.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Admin Panel: An admin panel is available for managing events in the database.
+   - Add Event: Admin users can add new events to the database, specifying event details such as title, date, location, category, etc.
+   - Delete Event: Admin users can delete existing events from the database.
+   - Edit Event: Admin users can edit the details of existing events in the database.
 
-### `npm run eject`
+- Responsive Design: The application is responsive and can be accessed from different devices.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Screenshot
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Main Page](/src/assets/screenshots/mainPage.png)
+![Category Page](/src/assets/screenshots/categoryPage.png)
+![Event Detail Page](/src/assets/screenshots/eventDetailPage.jpg)
+![LogIn Page](/src/assets/screenshots/LogInPage.png)
+![Admin Page](/src/assets/screenshots/AdminPage.png)
+![Add Event Modal](/src/assets/screenshots/addeventModal.jpg)
+![Event Edit Modal](/src/assets/screenshots/eventEditModal.jpg)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Links
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Live Site URL: [https://eventharbor-6d4a8.web.app/]
 
-## Learn More
+## My process
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Built with
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Frontend: React.js, HTML, CSS
+- Database: Firebase Database
+- Other Libraries: React Router for routing, Bootstrap for styling
 
-### Code Splitting
+### What I learned
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+1. Firebase Integration
+  - Learned how to integrate Firebase into the React application for real-time database communication. This includes setting up a Firebase project, adding Firebase SDK to the project, establishing connection with Firebase database services such as Realtime Database, and accessing data from and writing data to the database.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. Data Management with Firebase: 
+  - Utilized Firebase SDK methods to read and write data to Firebase Realtime Database. This involved fetching data from the database using methods like get or on, and writing data to the database using methods like set, update, or push.
 
-### Making a Progressive Web App
+3. React Router Navigation: 
+  - Utilized React Router for dynamic navigation within the application, enabling users to seamlessly navigate between different pages based on their interactions and application state.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+4. Loader Implementation: 
+  - Implemented loading indicators (loaders) using React Router to enhance user experience while fetching data from the Firebase database. This ensures a smoother transition and provides feedback to users during data loading processes.
 
-### Advanced Configuration
+5. Action Functions Usage: 
+  - Leveraged action functions provided by React Router to manage page transitions and manipulate application state based on user interactions. This allowed for seamless page transitions and effective control over application flow.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+6. Data Management: 
+  -I improved my ability to manage data using state and props in React components. This is important for facilitating data communication between components.
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Creator
 
-### `npm run build` fails to minify
+- [@burcuozdmr]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributors
+
+- [@beyazite]
+- [@nevzatgokcen]
+
+ - I completed the project, which we started as a bootcamp final assignment as a group of three people, then continued alone. I made many changes to the initial application and made the website functional. As a result, I have knowledge of every aspect of the project and I have contributed to every aspect of it.
+
+
+
+
