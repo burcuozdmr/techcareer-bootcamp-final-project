@@ -1,19 +1,60 @@
 import React from "react";
 import { useState } from "react";
+import { Form, useNavigate, useSubmit } from "react-router-dom";
+
 const AdminEditModal = (props) => {
-  const event = props.event;
+  const eventTotal = props.event;
+
+  const event = eventTotal.event;
+  const key = eventTotal.key;
+
+  const navigate = useNavigate();
+  const submit = useSubmit();
+
   const [edit, setEdit] = useState(true);
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [location, setLocation] = useState("");
   const [category, setCategory] = useState("");
   const [info, setInfo] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   const editHandler = () => {
     setEdit(false);
   };
-  const saveHandler = () => {
+
+  
+  const saveHandler = (eventId) => {
+
     setEdit(true);
+    const finalname = name === '' || name === null ? event.title : name
+    const finalimageUrl = imageUrl === '' || imageUrl === null ? event.imageUrl : imageUrl
+    const finaldate = date === '' || date === null ? event.date : date
+    const finallocation = location === '' || location === null ? event.location : location
+    const finalcategory = category === '' || category === null ? event.category : category
+    const finalinfo = info === '' || info === null ? event.shortInformation : info
+
+
+    submit(
+      { eventId, finalname, finalimageUrl, finaldate, finallocation, finalcategory, finalinfo },
+      { method: "patch" }
+    );
+    navigate(`/admin/${eventId}`);
+  };
+  const closeHandler = () => {
+    navigate("/admin");
+  };
+  const deleteHandler = (eventId) => {
+    const proceed = window.confirm("Are you sure?");
+
+    if (proceed) {
+      submit(
+        {
+          eventId,
+        },
+        { method: "delete", action: "/admin" }
+      );
+    }
   };
 
   const changeInputHandler = (event) => {
@@ -22,24 +63,22 @@ const AdminEditModal = (props) => {
 
     if (name === "name") {
       setName(value);
-     
     } else if (name === "date") {
       setDate(value);
-      
     } else if (name === "location") {
       setLocation(value);
-   
     } else if (name === "category") {
       setCategory(value);
-
     } else if (name === "info") {
       setInfo(value);
-   
+    } else if (name === "imageUrl") {
+      setImageUrl(value);
     }
   };
+
   return (
     <div
-      class="modal fade"
+      className="modal fade"
       id="viewMore"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
@@ -53,6 +92,7 @@ const AdminEditModal = (props) => {
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
+              onClick={closeHandler}
             ></button>
           </div>
           <div class="modal-body row m-4">
@@ -64,7 +104,15 @@ const AdminEditModal = (props) => {
                 style={{ width: "30rem" }}
               />
             </div>
-            <div className="col-sm-5 col-lg-4 ">
+            <Form
+              method="patch"
+              onSubmit={(e) => {
+                console.log(e.target.value );
+                e.preventDefault();
+                saveHandler(key);
+              }}
+              className="col-sm-5 col-lg-4 "
+            >
               <div class="mb-3">
                 <input
                   type="text"
@@ -87,7 +135,7 @@ const AdminEditModal = (props) => {
                   name="date"
                   class="form-control "
                   id="recipient-name"
-                  value={event.date}
+                  defaultValue={event.date}
                   disabled={edit}
                   onChange={changeInputHandler}
                 />
@@ -124,25 +172,31 @@ const AdminEditModal = (props) => {
                   >
                     Category
                   </option>
-                  <option
-                    value="Music"
-                    selected={event.category === "Music"}
-                  >
+                  <option value="Music" selected={event.category === "Music"}>
                     Music
                   </option>
-                  <option
-                    value="Events-Art"
-                    selected={event.category === "Art"}
-                  >
-                    Events - Art
+                  <option value="Art" selected={event.category === "Art"}>
+                    Art
                   </option>
-                  <option
-                    value="Sport"
-                    selected={event.category === "Sport"}
-                  >
+                  <option value="Sport" selected={event.category === "Sport"}>
                     Sport
                   </option>
                 </select>
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">
+                  Location:
+                </label>
+                <input
+                  type="text"
+                  name="imageUrl"
+                  class="form-control "
+                  id="recipient-name"
+                  placeholder={event.imageUrl}
+                  disabled={edit}
+                  onChange={changeInputHandler}
+                  value={imageUrl}
+                />
               </div>
 
               <div class="mb-3">
@@ -168,25 +222,27 @@ const AdminEditModal = (props) => {
                 </button>
               )}
               {!edit && (
-                <button
-                  type="button"
-                  class="btn btn-success"
-                  onClick={saveHandler}
-                >
+                <button type="submit" class="btn btn-success">
                   Save
                 </button>
               )}
-            </div>
+            </Form>
           </div>
           <div class="modal-footer">
             <button
               type="button"
               class="btn btn-secondary"
               data-bs-dismiss="modal"
+              onClick={closeHandler}
             >
               Close
             </button>
-            <button type="button" class="btn btn-danger">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+              onClick={() => deleteHandler(key)}
+            >
               Delete Event
             </button>
           </div>

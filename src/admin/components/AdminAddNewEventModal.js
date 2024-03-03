@@ -31,59 +31,59 @@ const AdminAddNewEventModal = (props) => {
     }
   };
 
-  const submitHandler = async (event) => {
-    event.preventDefault();
+  // const submitHandler = async (event) => {
+  //   event.preventDefault();
 
-    const inputData = {
-      title: nameValue,
-      date: dateValue,
-      location: locationValue,
-      category: categoryValue,
-      imageUrl: imageURLValue,
-      shortInformation: infoValue,
-    };
+  //   const inputData = {
+  //     title: nameValue,
+  //     date: dateValue,
+  //     location: locationValue,
+  //     category: categoryValue,
+  //     imageUrl: imageURLValue,
+  //     shortInformation: infoValue,
+  //   };
 
-    if (Object.values(inputData).every((value) => value !== "")) {
-      try {
-        // Veritabanındaki "events" referansını alın
-        const eventsRef = ref(database, "events");
+  //   if (Object.values(inputData).every((value) => value !== "")) {
+  //     try {
+  //       // Veritabanındaki "events" referansını alın
+  //       const eventsRef = ref(database, "events");
 
-        // Yeni bir ID ile veriyi ekleyin
-        const newEventRef = push(eventsRef);
+  //       // Yeni bir ID ile veriyi ekleyin
+  //       const newEventRef = push(eventsRef);
 
-        // Yeni eklenen verinin ID'sini alın
-        const newEventId = newEventRef.key;
+  //       // Yeni eklenen verinin ID'sini alın
+  //       const newEventId = newEventRef.key;
 
-        // Veriyi ekleyin
-        await set(newEventRef, inputData);
+  //       // Veriyi ekleyin
+  //       await set(newEventRef, inputData);
 
-        console.log("Veri başarıyla eklendi. Yeni veri ID:", newEventId);
-      } catch (error) {
-        console.error("Veri eklenirken bir hata oluştu:", error);
-      }
-    } else {
-      if (nameValue === "") {
-        document.getElementById("name").classList.add("is-invalid");
-      } else if (dateValue === "") {
-        document.getElementById("date").classList.add("is-invalid");
-      } else if (locationValue === "") {
-        document.getElementById("location").classList.add("is-invalid");
-      } else if (categoryValue === "Category") {
-        document.getElementById("category").classList.add("is-invalid");
-      } else if (imageURLValue === "") {
-        document.getElementById("image").classList.add("is-invalid");
-      } else if (infoValue === "") {
-        document.getElementById("info").classList.add("is-invalid");
-      }
-    }
+  //       console.log("Veri başarıyla eklendi. Yeni veri ID:", newEventId);
+  //     } catch (error) {
+  //       console.error("Veri eklenirken bir hata oluştu:", error);
+  //     }
+  //   } else {
+  //     if (nameValue === "") {
+  //       document.getElementById("name").classList.add("is-invalid");
+  //     } else if (dateValue === "") {
+  //       document.getElementById("date").classList.add("is-invalid");
+  //     } else if (locationValue === "") {
+  //       document.getElementById("location").classList.add("is-invalid");
+  //     } else if (categoryValue === "Category") {
+  //       document.getElementById("category").classList.add("is-invalid");
+  //     } else if (imageURLValue === "") {
+  //       document.getElementById("image").classList.add("is-invalid");
+  //     } else if (infoValue === "") {
+  //       document.getElementById("info").classList.add("is-invalid");
+  //     }
+  //   }
 
-    setNameValue("");
-    setDateValue("");
-    setLocationValue("");
-    setCategoryValue("");
-    setImageURLValue("");
-    setInfoValue("");
-  };
+  //   setNameValue("");
+  //   setDateValue("");
+  //   setLocationValue("");
+  //   setCategoryValue("");
+  //   setImageURLValue("");
+  //   setInfoValue("");
+  // };
 
   return (
     <div
@@ -163,7 +163,7 @@ const AdminAddNewEventModal = (props) => {
                     Category
                   </option>
                   <option value="Music">Music</option>
-                  <option value="Events-Art">Events - Art</option>
+                  <option value="Events-Art">Art</option>
                   <option value="Sport">Sport</option>
                 </select>
               </div>

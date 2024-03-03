@@ -70,7 +70,7 @@ const ScrollSpy = ({foundEvent}) => {
         <h5 id="ticket" className="text-bg-secondary p-2 rounded">
           Ticket
         </h5>
-        <div className="d-flex">
+        <div className=" row d-flex">
           <div className="p-2 ">
             <span className="fw-semibold me-3">Student :</span>
             <span className="p-1 px-2 rounded bg-primary">$ {foundEvent.studentTicketPrice}</span>

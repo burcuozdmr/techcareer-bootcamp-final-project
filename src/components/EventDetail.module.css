@@ -1,0 +1,5 @@
+@media screen and (min-width: 972px) {
+  .carouselImg {
+    height: 400px !important;
+  }
+}

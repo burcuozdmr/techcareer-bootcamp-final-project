@@ -1,6 +1,7 @@
 import React from "react";
 import ScrollSpy from "./ScrollSpy";
 import { useParams} from "react-router-dom";
+import classes from "./EventDetail.module.css"
 
 
 const EventDetail = ({events}) => {
@@ -8,35 +9,29 @@ const EventDetail = ({events}) => {
   const foundEvent = events.find(event => Number(event.id )=== Number(eventId));
   return (
     <div className="container card mb-5 mt-5 border-0 bg-secondary p-5">
-      <div className="row gap-4">
+      <div className="row g-4 gx-5">
         <div
           id="carouselExampleAutoplaying"
-          class="carousel slide  rounded bg-light bg-opacity-50 col-lg-7 col-sm-12 "
+          class="carousel slide  rounded bg-light bg-opacity-50 col-xl-7 col-lg-7 col-md-12 col-sm-12 "
           data-bs-ride="true"
           style={{ maxWidth: "700px" }}
         >
-          <div class="carousel-inner p-3">
-            <div class="carousel-item active">
+          <div class="carousel-inner p-3 ">
+            <div class="carousel-item active"
+             style={{
+              backgroundImage: `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(${foundEvent.imageUrl})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+             
+            }}>
+              <div className={`d-flex justify-content-center align-items-center ${classes.carouselImg} `}>
               <img
                 src={foundEvent.imageUrl}
-                class="d-block mx-auto "
+                className="d-block m-auto "
                 alt="..."
-                style={{maxHeight: "400px"}}
+                style={{ maxHeight: "400px", maxWidth: "100%", height: "auto" }}
               />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="https://img.freepik.com/free-vector/modern-event-banner-template-with-degrade-background_1361-2219.jpg"
-                class="d-block mx-auto"
-                alt="..."
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="https://img.freepik.com/free-vector/music-event-poster-template-with-abstract-shapes_1361-1316.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699574400&semt=ais"
-                class="d-block mx-auto"
-                alt="..."
-              />
+              </div>
             </div>
           </div>
           <button
@@ -58,7 +53,7 @@ const EventDetail = ({events}) => {
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-        <div className="col-lg-5 col-sm-12 p-0">
+        <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12 mx-auto p-0">
           {/* <h3 className="mb-4">TITLE EVENT</h3> */}
           <ScrollSpy foundEvent={foundEvent}></ScrollSpy>
           {/* <div className="card p-4">

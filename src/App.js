@@ -9,6 +9,8 @@ import AdminLogIn from "./admin/components/AdminLogIn";
 import FilterResultPage from "./pages/FilterResultPage";
 import FilterRoot from "./pages/FilterRoot";
 
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,7 +18,7 @@ const router = createBrowserRouter([
     loader: eventsLoader,
     children: [
       {
-        path:'/',
+        path: "/",
         element: <FilterRoot />,
         loader: eventsLoader,
         children: [
@@ -38,7 +40,11 @@ const router = createBrowserRouter([
         loader: eventsLoader,
         children: [{ path: ":category", element: <EventsPage /> }],
       },
-      { path: "events/:category/:eventId", element: <EventDetailPage /> , loader: eventsLoader,},
+      {
+        path: "events/:category/:eventId",
+        element: <EventDetailPage />,
+        loader: eventsLoader,
+      },
     ],
   },
   { path: "/logIn", element: <AdminLogIn /> },
@@ -47,6 +53,7 @@ const router = createBrowserRouter([
     element: <AdminPage />,
     loader: eventsLoader,
     action: newEventAction,
+    children: [{ path: ":eventId", element: <AdminPage /> }],
   },
 ]);
 

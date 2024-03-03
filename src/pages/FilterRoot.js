@@ -9,7 +9,7 @@ const FilterRoot = () => {
     <>
       <Suspense fallback={<p style={{ textAlign: "center" }}> Loading...</p>}>
         <Await resolve={events}>
-          {(events) => <Filter events={events}></Filter>}
+          {(events) => <Filter events={Object.values(events)}></Filter>}
         </Await>
       </Suspense>
       <Outlet></Outlet>
