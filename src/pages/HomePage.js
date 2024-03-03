@@ -7,14 +7,11 @@ const HomePage = () => {
   const { events } = useLoaderData();
 
   return (
-    <>
-
-      <Suspense fallback={<p style={{ textAlign: "center" }}> Loading...</p>}>
-        <Await resolve={events}>
-          {(events) => <Categories events={Object.values(events)}></Categories>}
-        </Await>
-      </Suspense>
-    </>
+    <Suspense fallback={<p style={{ textAlign: "center" }}> Loading...</p>}>
+      <Await resolve={events}>
+        {(events) => <Categories events={Object.values(events)}></Categories>}
+      </Await>
+    </Suspense>
   );
 };
 
