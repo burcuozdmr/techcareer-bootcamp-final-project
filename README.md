@@ -81,14 +81,14 @@ This project is an event display system that allows users to browse and manage e
 
 ## Creator
 
-- [@burcuozdmr]
+- @burcuozdmr
 
 ## Contributors
 
-- [@beyazite]
-- [@nevzatgokcen]
+- @beyazite
+- @nevzatgokcen
 
- - I completed the project, which we started as a bootcamp final assignment as a group of three people, then continued alone. I made many changes to the initial application and made the website functional. As a result, I have knowledge of every aspect of the project and I have contributed to every aspect of it.
+ I completed the project, which we started as a bootcamp final assignment as a group of three people, then continued alone. I made many changes to the initial application and made the website functional. As a result, I have knowledge of every aspect of the project and I have contributed to every aspect of it.
 
 
 
