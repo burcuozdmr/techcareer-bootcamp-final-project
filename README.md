@@ -44,6 +44,7 @@ This project is an event display system that allows users to browse and manage e
 ![Admin Page](/src/assets/screenshots/AdminPage.png)
 ![Add Event Modal](/src/assets/screenshots/addeventModal.jpg)
 ![Event Edit Modal](/src/assets/screenshots/eventEditModal.jpg)
+![Responsive Design](/src/assets/screenshots/responsive.png)
 
 ### Links
 
