@@ -11,20 +11,24 @@ import { Link } from "react-router-dom";
 
 function CategoryCard({ title, category, events }) {
   return (
-    <div className="container mb-4 mt-2">
-      <fieldset className="bg-mainColor rounded pb-3 px-4 pt-3 card border-0">
-        <div className="mt-3  card-header shadowColor bg-color row">
-          <div className="col d-flex align-items-center">
-            <h6 className="text-light fw-semibold fs-5 p-0 ">{title}</h6>
-          </div>
-          <div className="col d-flex flex-row-reverse">
-            <Link
-              to={`/events/${category}`}
-              className="btn border-0  secondaryColor "
-              end
-            >
-              View More <i className="fa-solid fa-arrow-right"></i>
-            </Link>
+    <div className="container mb-lg-4 mt-2">
+      <fieldset className="bg-mainColor rounded pb-lg-3 px-lg-4 pt-lg-3 card border-0">
+        <div className="bg-color shadowColor mt-3 mx-3">
+          <div className="row px-3">
+            <div className="col d-flex align-items-center ">
+              <h6 className="text-light fw-semibold fs-lg-5 p-0 ">{title}</h6>
+            </div>
+            <div className="col text-end">  
+              <Link
+                to={`/events/${category}`}
+                className="btn border-0  secondaryColor"
+                end
+              >
+                View More
+                <i className="fa-solid fa-arrow-right ms-2"></i>
+              </Link>
+             
+            </div>
           </div>
         </div>
         <div className="card-body">

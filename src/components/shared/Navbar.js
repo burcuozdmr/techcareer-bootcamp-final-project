@@ -51,7 +51,7 @@ const Navbar = () => {
             <li className="nav-item">
               <NavLink to="/" className="nav-link" activeClassName="active" aria-current="page"
               end>
-                <button type="button" className="btn rounded-pill fs-6 fw-bold">
+                <button type="button" className="btn btn-sm-sm rounded-pill fs-lg-6 fw-bold">
                   HOME
                 </button>
               </NavLink>
@@ -107,7 +107,7 @@ const Navbar = () => {
             <Link to="/logIn">
               <button
                 type="button"
-                className={`btn btn-lg rounded-pill fw-bold px-4 ${classes["bg-secondaryColor"]}`}
+                className={`btn btn-lg-lg rounded-pill fw-bold px-lg-4 ${classes["bg-secondaryColor"]}`}
               >
                 LOGIN
               </button>

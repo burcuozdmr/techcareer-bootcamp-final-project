@@ -63,3 +63,8 @@
 .bg-color{
   background-color: rgba(134, 182, 182, 0.185) !important;
 }
+@media (max-width: 368px) {
+  .btn i {
+    display: none;
+  }
+}

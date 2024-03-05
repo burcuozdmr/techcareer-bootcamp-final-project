@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -6,7 +6,6 @@ import "swiper/css/pagination";
 import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 import classes from "./VisualSlide.module.css";
 import Navbar from "./Navbar";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 const VisualSlide = ({ events }) => {

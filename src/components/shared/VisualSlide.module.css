@@ -38,7 +38,7 @@ body {
 }
 
 .image {
-  padding: 70px 0 180px;
+  padding: 70px 0 100px;
   position: relative;
 }
 .image-section {
@@ -70,7 +70,6 @@ body {
   top: 288px;
   left: 0;
   width: 100%;
-  
   z-index: 2;
   padding: 3px;
   text-align: center;
@@ -90,5 +89,8 @@ body {
   .textTitle{
     font-size: 2px !important;
     font-weight: 100;
+  }
+  .image{
+    padding: 0 0 40px;
   }
 }

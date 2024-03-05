@@ -5,7 +5,7 @@ import Subscribe from "./Subscribe";
 
 const Footer = () => {
   return (
-    <footer id="contact">
+    <footer id="contact" className="position-relative">
       <Subscribe></Subscribe>
       <div
         className={`card border-0 ${classes["bg-mainColor"]}`}

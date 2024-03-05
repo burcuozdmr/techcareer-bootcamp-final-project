@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import classes from "./Subscribe.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,18 +15,30 @@ const Subscribe = () => {
     console.log("calıstın!");
     e.preventDefault();
   };
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
-    <div className="position-relative z-2 " style={{ height: "25vh" }}>
-      <section className="container" style={{ maxWidth: "850px" }}>
+    <div className="">
+      <section className="container position-absolute top-0 start-50 translate-middle  z-2" style={{ maxWidth: "850px" }}>
         <div className={classes["bg-mainColor"]}></div>
         <div
-          className={`card border border-0 p-4 shadow-lg opacity-75 ${classes["bg-mainLightColor"]}`}
+          className={`card border border-0 p-lg-4 p-sm-2 shadow-lg opacity-75 ${classes["bg-mainLightColor"]} `}
         >
           <div className="card-body text-center">
-            <h5 className={`fw-bold pb-3 ${classes.secondaryColor}`}>
+            <p className={`fw-bold text-sm  pb-lg-3 pb-sm-2 ${classes.secondaryColor}`}>
               SUBSCRIBE NOW
-            </h5>
-            <h3 className="fw-semibold">TO GET LATEST EVENT INFORMATION </h3>
+            </p>
+            <p className="fw-semibold">TO GET LATEST EVENT INFORMATION </p>
             <p className="text-secondary fw-normal fst-italic">
               An informational e-mail will be sent to your e-mail address every
               week regarding the events.
@@ -40,14 +52,14 @@ const Subscribe = () => {
                 >
                   <input
                     type="email"
-                    className={`form-control p-3 rounded-pill bg-transparent ${classes.i}`}
+                    className={`form-control p-lg-3 rounded-pill bg-transparent ${classes.i}`}
                     placeholder="Email Address"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
                     ref={inputRef}
                   />
                   <button
-                    className={`btn rounded-pill position-absolute top-50 end-0 translate-middle-y p-3 px-3 fw-semibold ${classes["bg-secondaryColor"]} ${classes.b}`}
+                    className={`btn rounded-pill position-absolute top-50 end-0 translate-middle-y p-lg-3 px-lg-3  fw-semibold ${classes["bg-secondaryColor"]} ${classes.b}`}
                     type="submit"
                     id="button-addon2"
                   >

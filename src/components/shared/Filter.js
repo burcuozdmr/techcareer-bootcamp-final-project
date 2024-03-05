@@ -48,14 +48,14 @@ const Filter = ({ events }) => {
 
   return (
     <section
-      className="container position-absolute top-100 start-50 translate-middle"
+      className="container "
       style={{ maxWidth: "850px" }}
     >
       <div
         className={`card border border-0 p-4 shadow-lg mb-5 rounded ${classes["bg-mainColor"]}`}
       >
         <div className="card-header">
-          <p className={`fs-5 fw-bold pt-2 ${classes.secondaryColor} ${classes.t}`}>
+          <p className={`fs-lg-5 fw-bold pt-2 ${classes.secondaryColor} ${classes.t}`}>
             FIND YOUR OWN EVENTS NOW
           </p>
         </div>
