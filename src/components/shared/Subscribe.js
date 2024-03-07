@@ -15,18 +15,7 @@ const Subscribe = () => {
     console.log("calıstın!");
     e.preventDefault();
   };
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+ 
   return (
     <div className="">
       <section className="container position-absolute top-0 start-50 translate-middle  z-2" style={{ maxWidth: "850px" }}>

@@ -1,21 +1,55 @@
 import React, { useState } from "react";
 import AdminAddNewEventModal from "./AdminAddNewEventModal";
 import { CITIES } from "../../components/Checkbox";
+import AdminCards from "./AdminCards";
+import { ToastContainer, toast } from "react-toastify";
 
-
-const AdminSearch = ({ events, onFilteredEvents, onManageFilter }) => {
+const AdminSearch = ({ events }) => {
   const [searchText, setSearchText] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
- 
+  const [filtered, setFiltered] = useState("");
 
-  const filterData = () => {
-    const filteredEvents = events.filter((event) =>
-      event.title.toLowerCase().includes(searchText.toLowerCase())
-    );
-    onFilteredEvents(filteredEvents);
+  let filteredEvents = [...events];
 
+  const searchData = () => {
+    if (searchText !== "") {
+      filteredEvents = events.filter((event) =>
+        event.title.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setFiltered(filteredEvents);
+      window.location.hash = "SearchResult";
+    } else {
+      toast.error("Please enter a search keyword!", {
+        position: "top-center",
+      });
+    }
   };
+
+  const filterData = ({ date, city }) => {
+    if (date) {
+      filteredEvents = filteredEvents.filter((event) => event.date === date);
+
+    }
+
+    if (city) {
+      filteredEvents = filteredEvents.filter((event) => event.city === city);
+    }
+    setFiltered(filteredEvents);
+    window.location.hash = "SearchResult";
+  };
+
+  const handleReset = () => {
+    setSelectedDate(""); 
+    setSelectedCity(""); 
+    setSearchText("");
+    setFiltered("");
+  };
+
+  const handleClick = () => {
+    setFiltered("");
+  };
+
 
   return (
     <div className="container">
@@ -36,10 +70,11 @@ const AdminSearch = ({ events, onFilteredEvents, onManageFilter }) => {
               className="btn btn-secondary rounded-pill position-absolute top-50 end-0 translate-middle-y p-3 px-4 me-2 fw-semibold z-2"
               type="button"
               id="button-addon2"
-              onClick={filterData}
+              onClick={searchData}
             >
               Search
             </button>
+            <ToastContainer></ToastContainer>
           </div>
         </div>
         <div className="col-4 my-auto d-flex justify-content-end">
@@ -62,13 +97,19 @@ const AdminSearch = ({ events, onFilteredEvents, onManageFilter }) => {
               type="date"
               className="form-control col bg-secondary"
               value={selectedDate}
-              onChange={(e) => setSelectedDate(e.target.value)}
+              onChange={(e) => {
+                setSelectedDate(e.target.value);
+                filterData({ date: e.target.value });
+              }}
             />
             <select
               className="form-select col bg-secondary "
               aria-label="Default select example"
               value={selectedCity}
-              onChange={(e) => setSelectedCity(e.target.value)}
+              onChange={(e) => {
+                setSelectedCity(e.target.value);
+                filterData({ city: e.target.value });
+              }}
             >
               <option selected>City</option>
               {CITIES.map((city, index) => (
@@ -77,10 +118,15 @@ const AdminSearch = ({ events, onFilteredEvents, onManageFilter }) => {
                 </option>
               ))}
             </select>
-            <button className="btn btn-primary col"> Reset</button>
+            <button className="btn btn-primary col" onClick={handleReset}> Reset</button>
           </div>
         </div>
       </div>
+      <AdminCards
+        events={events}
+        filtered={filtered}
+        handleClick={handleClick}
+      ></AdminCards>
     </div>
   );
 };

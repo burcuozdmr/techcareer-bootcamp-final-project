@@ -4,15 +4,14 @@ import AdminEditModal from "./AdminEditModal";
 import classes from "./AdminCards.module.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-const AdminCards = ({events,filtered}) => {
+const AdminCards = ({events,filtered, handleClick}) => {
 
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [renderGroup, setRenderGroup] = useState(true);
 
-  
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
+    handleClick();
   };
 
   const [selectedEvent, setSelectedEvent] = useState({ key: "", event: {} });
@@ -21,6 +20,9 @@ const AdminCards = ({events,filtered}) => {
     setSelectedEvent({ key, event });
   };
 
+  if (filtered !== "" && selectedCategory !== "SearchResult") {
+    setSelectedCategory("SearchResult");
+  }
 
   return (
     <div className="container mt-5">
@@ -76,7 +78,9 @@ const AdminCards = ({events,filtered}) => {
           <ul class="nav nav-tabs card-header-tabs px-3 pt-3 col  d-flex justify-content-end">
             <li class="nav-item">
               <div
-                className={`nav-link`}
+                className={`nav-link ${
+                  selectedCategory === "SearchResult" && "active bg-secondary"
+                }`}
                 aria-current="true"
                 href="#SearchResult"
               >
@@ -86,8 +90,10 @@ const AdminCards = ({events,filtered}) => {
           </ul>
           
         </div>
+        {filtered.length === 0  && selectedCategory === "SearchResult" && <p className="text-secondary fw-semibold p-3 fs-5" >No results found </p>}
         <div class="card-body row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5">
-        {(filtered !== undefined ? Object.entries(filtered) : 
+
+        {(filtered !== "" ? Object.entries(filtered) : 
             Object.entries(events)
               .filter(
                 ([key, event]) =>
