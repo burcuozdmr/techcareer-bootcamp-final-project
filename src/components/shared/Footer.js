@@ -11,7 +11,7 @@ const Footer = () => {
         className={`card border-0 ${classes["bg-mainColor"]}`}
         style={{ paddingTop: "150px" }}
       >
-        <div className="container p-4 ">
+        <div className="container  p-4 ">
           <div className="card-header p-4 d-flex justify-content-between row">
             <div className=" col-lg-7 col-sm mb-4">
               <img src={logo} alt="" className={classes.logoImg}></img>

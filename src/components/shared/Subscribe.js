@@ -52,14 +52,14 @@ const Subscribe = () => {
                 >
                   <input
                     type="email"
-                    className={`form-control p-lg-3 rounded-pill bg-transparent ${classes.i}`}
+                    className={`form-control p-lg-3 rounded-pill bg-transparent z-1 ${classes.i}`}
                     placeholder="Email Address"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
                     ref={inputRef}
                   />
                   <button
-                    className={`btn rounded-pill position-absolute top-50 end-0 translate-middle-y p-lg-3 px-lg-3  fw-semibold ${classes["bg-secondaryColor"]} ${classes.b}`}
+                    className={`btn rounded-pill position-absolute top-50 end-0 translate-middle-y p-lg-3 px-lg-3 z-2  fw-semibold ${classes["bg-secondaryColor"]} ${classes.b}`}
                     type="submit"
                     id="button-addon2"
                   >

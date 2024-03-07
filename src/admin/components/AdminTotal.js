@@ -1,22 +1,24 @@
-import React from "react";
+import React,{useState} from "react";
 import AdminSearch from "./AdminSearch";
 import AdminNavbar from "./AdminNavbar";
 import AdminCards from "./AdminCards";
-import { useState } from "react";
+
 
 
 const AdminTotal = ({events}) => {
-  const [sendData, setSendData] = useState("");
-
-  const eventDataHandler = (eventData) => {
-    setSendData(eventData);
-  };
-
+  const [filtered, setFiltered] = useState();
+ 
+  
+  const filteredEvents = (filteredEvents) => {
+    setFiltered(filteredEvents);
+    console.log(filtered);
+  }
+  
   return (
     <>
       <AdminNavbar></AdminNavbar>
-      <AdminSearch onEventData={eventDataHandler}></AdminSearch>
-      <AdminCards sendData={sendData} events ={events}></AdminCards>
+      <AdminSearch events={events} onFilteredEvents={filteredEvents} ></AdminSearch>
+      <AdminCards events ={events} filtered={filtered} ></AdminCards>
     </>
   );
 };
